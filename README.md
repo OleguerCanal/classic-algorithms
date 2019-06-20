@@ -1,2 +1,2 @@
 # algorithms
-Repo of th esolutions of competitive programming problems
+Repo of the solutions of competitive programming problems
