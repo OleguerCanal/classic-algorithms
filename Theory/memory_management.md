@@ -1,4 +1,4 @@
-# Memory managememnt notes
+# Memory management notes
 
 ## Stack allocation:
 Example:
@@ -10,6 +10,7 @@ Example:
 **Pros:**
 - Faster allocation
 - Automatically "destroyed" when scope is finished
+
 **Cons:**
 - Can only be used in this scope (between these brackets)
 - Objects can't be very very big (STACK memory is fixed to ~2MB)
@@ -39,6 +40,7 @@ Example of dinamically allocated memory:
 **Pros:**
 - Control over life-span of the object
 - Can hold bigger variables (HEAP memory is expandable)
+
 **Cons:**
 - Slower
 - Can lead into memory leaks
@@ -50,9 +52,11 @@ Example of dinamically allocated memory:
 
 **OBS:** The memory allocating part of **new**, is equivalent to **malloc**:
 ```cpp
-  Entity* entity = new Entity();  // Allocates memory and calls constructor
+  // Allocate memory and call constructor:
+  Entity* entity = new Entity();
 
-  Entity* entity = (Entity*)malloc(sizeof(Entity));  // Allocates memory but doesn't call constructor
+  // Allocate memory but don't call constructor
+  Entity* entity = (Entity*)malloc(sizeof(Entity));  
 ```
 
 ### The "DELETE" KeyWord:
@@ -92,5 +96,5 @@ Example:
 
 Example:
 ```cpp
-  include <memory>  // Needs to be included to use cmart pointers
+  include<memory>  // Needs to be included to use cmart pointers
 ```
