@@ -19,11 +19,13 @@ void print_set(const std::vector<bool> &selections,
   print_vect<int>(multiset);
 }
 
-bool print_equal_sums(int pos, int sum, std::vector<bool> *selections,
-                      const std::vector<int> &elems) {
+void print_equal_sums(int pos, int sum, const std::vector<int> &elems,
+                      bool *found, std::vector<bool> *selections) {
+  if (*found) return;  // If we already found a solution, stop
   if (pos == static_cast<int>(elems.size())) {
     if (sum == 0) print_set(*selections, elems);
-    return (sum == 0);
+    *found = (sum == 0);
+    return;
   }
 
   // IDEA: I can either pick or not pick elem of position pos
@@ -32,13 +34,11 @@ bool print_equal_sums(int pos, int sum, std::vector<bool> *selections,
   // Case we pick this elem
   // (we want to add as many values as we can to make it larger in case of tie)
   selections->at(pos) = true;
-  bool status_add = print_equal_sums(pos + 1, sum - elem, selections, elems);
+  print_equal_sums(pos + 1, sum - elem, elems, found, selections);
 
   // Case we dont pick it
   selections->at(pos) = false;
-  bool status_dont_add =  print_equal_sums(pos + 1, sum, selections, elems);
-
-  return (status_add || status_dont_add);
+  print_equal_sums(pos + 1, sum, elems, found, selections);
 }
 
 int main() {
@@ -51,6 +51,7 @@ int main() {
   std::sort(elems.begin(), elems.end(), std::greater<int>());
 
   std::vector<bool> selections(n, false);
-  bool found = print_equal_sums(0, s, &selections, elems);
+  bool found = false;
+  print_equal_sums(0, s, elems, &found, &selections);
   if (!found) std::cout << "no solution" << std::endl;
 }
