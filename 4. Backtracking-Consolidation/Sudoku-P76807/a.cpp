@@ -18,11 +18,19 @@ const int size = 9;
 // numbers found in each row, column and square of a sudoku
 // IDEA: Optimize IsSolved, IsPossibleVal kind of cheks with matrices of bools
 // instead of iterate over sudolu
-struct Sudoku {
-  mi values = mi(size, vi(size, -1));
-  mb rows = mb(size, vb(size, false));
-  mb cols = mb(size, vb(size, false));
-  mb squares = mb(size, vb(size, false));
+class Sudoku {
+ public:
+  mi values;
+  mb rows;
+  mb cols;
+  mb squares;
+
+  Sudoku() {
+    values = mi(size, vi(size, -1));
+    rows = mb(size, vb(size, false));
+    cols = mb(size, vb(size, false));
+    squares = mb(size, vb(size, false));
+  }
 
   // Whether the sudoku is solved
   bool IsSolved() {  // TODO(oleguer): Could be optimized
@@ -44,6 +52,8 @@ struct Sudoku {
     std::cout << "i:" << i << ", j:" << j << ", sq:" << GetSquare(i, j)
               << ", v:" << val << std::endl;
     values[i][j] = val;
+    std::cout << values[i][j] << std::endl;
+    // Print();
     int v = val - 1;
     rows[i][v] = true;
     cols[j][v] = true;
@@ -80,7 +90,7 @@ struct Sudoku {
     for (int i = 0; i < size; ++i)
       for (int j = 0; j < size; ++j) {
         std::cin >> c;
-        std::cout << c << std::endl;
+        // std::cout << c << std::endl;
         if (c == '.')
           values[i][j] = -1;
         else {
@@ -88,6 +98,7 @@ struct Sudoku {
           InputValue(val, i, j);
         }
       }
+    // Print();
   }
 
   // Print current sudoku
