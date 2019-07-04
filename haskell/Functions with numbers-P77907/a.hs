@@ -20,14 +20,14 @@ isPrime 0 = False
 isPrime 1 = False
 isPrime x = not $ hasDivisible x [2..(floor (sqrt (fromIntegral x :: Double)))]
 
--- slowFib 5
+-- slowFib
 -- OBS: THIS IS EXPONENTIALLY SLOW
 slowFib :: Int -> Int
 slowFib 0 = 0
 slowFib 1 = 1
 slowFib n = slowFib (n-1) + slowFib (n-2)
 
--- quickFib 40
+-- quickFib
 -- Idea: fib = [1, 1, fibs +(element-wise) (tail fibs)]. ie:
 --    [ 1, 1, 2, 3,  5,  8, 13, .... ]
 -- +  [ 1, 2, 3, 5,  8, 13, 21, .... ]
