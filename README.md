@@ -1,2 +1,2 @@
 # algorithms
-Repo of the solutions of competitive programming problems from https://jutge.org/
+Repo of my solutions to competitive programming problems from https://jutge.org/

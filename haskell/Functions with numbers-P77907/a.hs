@@ -29,9 +29,9 @@ slowFib n = slowFib (n-1) + slowFib (n-2)
 
 -- quickFib
 -- Idea: fib = [1, 1, fibs +(element-wise) (tail fibs)]. ie:
---    [ 1, 1, 2, 3,  5,  8, 13, .... ]
--- +  [ 1, 2, 3, 5,  8, 13, 21, .... ]
--- =  [ 2, 3, 5, 8, 13, 21, 34, .... ]
+--    [ 1, 1, 2, 3,  5, .... ]
+-- +  [ 1, 2, 3, 5,  8, .... ]
+-- =  [ 2, 3, 5, 8, 13, .... ]
 -- OBS: This solution O(n^2)
 fibs = 0 : 1 : zipWith (+) fibs (tail fibs)  -- Compute list of all fibs
 quickFib :: Int -> Int
