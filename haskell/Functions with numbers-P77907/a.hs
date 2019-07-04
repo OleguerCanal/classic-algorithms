@@ -18,14 +18,21 @@ hasDivisible x list = if x `mod` head list == 0
 isPrime :: Int -> Bool
 isPrime 0 = False
 isPrime 1 = False
-isPrime x = hasDivisible x [2..(floor (sqrt x))]
-
--- isPrime n = primeCheck n $ floor $ sqrt $ (fromIntegral n :: Double)
+isPrime x = not $ hasDivisible x [2..(floor (sqrt (fromIntegral x :: Double)))]
 
 -- slowFib 5
+-- OBS: THIS IS EXPONENTIALLY SLOW
 slowFib :: Int -> Int
 slowFib 0 = 0
 slowFib 1 = 1
 slowFib n = slowFib (n-1) + slowFib (n-2)
 
 -- quickFib 40
+-- Idea: fib = [1, 1, fibs +(element-wise) (tail fibs)]. ie:
+--    [ 1, 1, 2, 3,  5,  8, 13, .... ]
+-- +  [ 1, 2, 3, 5,  8, 13, 21, .... ]
+-- =  [ 2, 3, 5, 8, 13, 21, 34, .... ]
+-- OBS: This solution O(n^2)
+fibs = 0 : 1 : zipWith (+) fibs (tail fibs)  -- Compute list of all fibs
+quickFib :: Int -> Int
+quickFib n = fibs !! n -- Get nth elem
