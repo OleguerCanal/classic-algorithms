@@ -25,6 +25,12 @@ class Sudoku {
     rows_ = mb(size, vb(size, false));
     cols_ = mb(size, vb(size, false));
     squares_ = mb(size, vb(size, false));
+
+    // Fill pos_to_sqare_matrix_
+    pos_to_sqare_matrix_ = mi(size, vi(size, 0));
+    for (int i = 0; i < size; ++i)
+      for (int j = 0; j < size; ++j)
+        pos_to_sqare_matrix_[i][j] = (i / 3) * 3 + (j / 3);
   }
   ~Sudoku() {}
 
@@ -36,22 +42,13 @@ class Sudoku {
     return true;
   }
 
-  // Get flatted square position
-  int GetSquare(const int &i, const int &j) {
-    int square = (i / ((int)std::sqrt(size))) * ((int)std::sqrt(size)) +
-                 (j / ((int)std::sqrt(size)));
-    return square;
-  }
-
   // Mark value val in position i, j
   void InputValue(const int &val, const int &i, const int &j) {
-    // std::cout << "i:" << i << ", j:" << j << ", sq:" << GetSquare(i, j)
-    //           << ", v:" << val << std::endl;
     values_[i][j] = val;
     int v = val - 1;
     rows_[i][v] = true;
     cols_[j][v] = true;
-    squares_[GetSquare(i, j)][v] = true;
+    squares_[pos_to_sqare_matrix_[i][j]][v] = true;
   }
 
   // Assume that the value was correctly placed
@@ -62,7 +59,7 @@ class Sudoku {
       int v = val - 1;
       rows_[i][v] = false;
       cols_[j][v] = false;
-      squares_[GetSquare(i, j)][v] = false;
+      squares_[pos_to_sqare_matrix_[i][j]][v] = false;
     }
   }
 
@@ -71,7 +68,8 @@ class Sudoku {
     // row, col, sqare val must be false (it cant be in any of these positions)
     int v = val - 1;
     if (values_[i][j] != -1) return false;
-    return !rows_[i][v] && !cols_[j][v] && !squares_[GetSquare(i, j)][v];
+    return !rows_[i][v] && !cols_[j][v] &&
+           !squares_[pos_to_sqare_matrix_[i][j]][v];
   }
 
   // Wheter there is already a number at position i, j
@@ -97,10 +95,10 @@ class Sudoku {
   void Print() {
     std::cout << std::endl;
     for (int i = 0; i < size; ++i) {
-      for (int j = 0; j < size; ++j) {
-        std::cout << values_[i][j] << " ";  // TODO(oleguer): Probably wrong
+      for (int j = 0; j < size - 1; ++j) {
+        std::cout << values_[i][j] << " ";
       }
-      std::cout << std::endl;
+      std::cout << values_[i][size - 1] << std::endl;
     }
   }
 
@@ -109,37 +107,37 @@ class Sudoku {
   mb rows_;
   mb cols_;
   mb squares_;
-    // std::cout << "i:" << i << ", j:" << j << std::endl;
+
+  mi pos_to_sqare_matrix_;
 };
 
-Coord GetCoord(const int &pos) {
-  int i = pos / size;
-  int j = pos % size;
-  return Coord(i, j);
-}
+void SolveSudoku(const int &pos, Sudoku *sudoku, bool *found_solution) {
+  if (*found_solution)
+    return;  // Idea: Only one possible solution, so if it has been found, stop
 
-void SolveSudoku(const int &pos, Sudoku *sudoku) {
   if (pos == size * size) {
-    if (sudoku->IsSolved()) sudoku->Print();
+    if (sudoku->IsSolved()) {
+      sudoku->Print();
+      *found_solution = true;
+    }
     return;
   }
 
-  Coord cord = GetCoord(pos);
-  int i = cord.first;
-  int j = cord.second;
+  int i = pos / size;
+  int j = pos % size;
 
-  bool tried_value = false;
   if (sudoku->IsEmpty(i, j)) {
+    bool tried_value = false;
     for (int val = 1; val <= size; ++val)
       if (sudoku->IsPossible(val, i, j)) {
         tried_value = true;
         sudoku->InputValue(val, i, j);
-        SolveSudoku(pos + 1, sudoku);
+        SolveSudoku(pos + 1, sudoku, found_solution);
         sudoku->RemoveValue(i, j);
       }
     if (!tried_value) return;  // If no value is possible
-  } else {  // If there is a value, skip
-    SolveSudoku(pos + 1, sudoku);
+  } else {                     // If there is a value, skip
+    SolveSudoku(pos + 1, sudoku, found_solution);
   }
 }
 
@@ -150,6 +148,7 @@ int main() {
   for (int i = 0; i < n; ++i) {
     Sudoku sudoku;
     sudoku.ReadSudoku();
-    SolveSudoku(0, &sudoku);
+    bool found_solution = false;
+    SolveSudoku(0, &sudoku, &found_solution);
   }
 }
