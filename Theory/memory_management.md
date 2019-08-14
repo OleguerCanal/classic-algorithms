@@ -96,5 +96,43 @@ Example:
 
 Example:
 ```cpp
-  include<memory>  // Needs to be included to use cmart pointers
+  include <memory>  // Needs to be included to use cmart pointers
+  {
+    std::unique_ptr<Entity> entity = std::make_unique<Entity>();  // Gets created
+  }
+  // Here entity is automatically destroyed (out of scope)
 ```
+
+### shared_ptr
+- Keeps track of how many references are there to that shared_ptr (once it gets to 0, its automatically destroyed)
+
+Example:
+```cpp
+  include <memory>  // Needs to be included to use cmart pointers
+  {
+    std::shared_ptr<Entity> e0;
+    {
+      std::shared_ptr<Entity> entity = std::make_shared<Entity>();  // Gets created (referennces count = 1)
+      e0 = entity;  // assigned to e0 (referennces count = 2)
+    }
+    // entity out of scope but doesnt get destryed (referennces count = 1)
+  }
+  // here the memory is freed, all references are dead (references count = 0)
+```
+
+### weak_ptr
+- Allows you to copy a shared_ptr without increasing ref count (useful to check if something is still alive without keeping it alive)
+
+Example:
+```cpp
+  include <memory>  // Needs to be included to use cmart pointers
+  {
+    std::weak_ptr<Entity> e0;
+    {
+      std::shared_ptr<Entity> entity = std::make_shared<Entity>();  // Gets created (referennces count = 1)
+      e0 = entity;  // assigned to e0 but since its weak: (referennces count = 1)
+    }
+    // entity out of scope gets destryed (referennces count = 0)
+  }
+```
+
