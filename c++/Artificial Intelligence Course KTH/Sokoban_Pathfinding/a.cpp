@@ -14,9 +14,22 @@ const std::map<char, std::string> map_elements = {
     {' ', "EMPTY"}, {'#', "WALL"}, {'.', "GOAL"},      {'@', "PLAYER"},
     {'+', "DONE"},  {'$', "WALL"}, {'*', "IMPOSSIBLE"}};
 
+// Holds the position of a connection and the relative movement from parent to
+// this node
+struct Connection {
+  position pos;
+  char movement;
+  Connection(const position& p, const char& move) {
+    pos = p;
+    movement = move;
+  }
+};
+
+// Struct to hold Node info
 struct Node {
-  position pos, parent_pos;
-  std::vector<position> child_pos;
+  position pos;
+  Connection parent;
+  std::vector<Connection> child_pos;
   int g, h = 0;
 
   int f() { return g + h; }
@@ -28,88 +41,89 @@ struct Node {
   }
 };
 
-class Game {
- public:
-  Game(const int& size_x, const int& size_y) {
-    size_x_ = size_x;
-    size_y_ = size_y;
-    std::vector<std::vector<Node>> graph =
-        std::vector(size_x, std::vector<Node>(size_y));
-    for (size_t i = 0; i < graph.size(); i++)
-      for (size_t j = 0; j < graph[0].size(); j++) {
+// Struct to hold current game info
+struct GameInfo {
+  size_t size_x, size_y;  // Shape of map
+  Solvable solvability = Solvable::unknown;
+  position start_pos, goal_pos;          // Ids of the start and end nodes
+  std::vector<std::vector<bool>> map;    // 1 == walkable path, 0 == blocked
+  std::vector<std::vector<Node>> graph;  // Stores node info
 
-      }
-    graph_ = graph;
+  GameInfo(const int& x, const int& y) {
+    size_x = x;
+    size_y = y;
   }
-  ~Game() {}
-
-  // Populates map, player_pos and objective_pos
-  // Returns either solved, impossible or unknown solvability
-  Solvable ReadMap() {
-    std::vector<std::vector<bool>> map = std::vector<std::vector<bool>>(
-        size_x_, std::vector<bool>(size_y_, false));
-    for (size_t i = 0; i < map.size(); i++) {
-      for (size_t j = 0; j < map[0].size(); j++) {
-        char c;
-        std::cin >> c;
-        std::string element = map_elements[c];
-        if (element == "EMPTY" || element == "GOAL" || element == "PLAYER") {
-          map[i][j] = true;
-          if (element == "GOAL") start_pos_ = position(i, j);
-          if (element == "PLAYER") goal_pos_ = position(i, j);
-        }
-        if (element == "DONE") return Solvable::solved;
-        if (element == "IMPOSSIBLE") return Solvable::impossible;
-      }
-    }
-    map_ = map;  // TODO(oleguer): Unnecessary copying?
-    return Solvable::unknown;
-  }
-
-  Solvable FindPath(std::string* solution) {}
-
- private:
-  // Populates graph_ private variable
-  void BuildGraph() {
-    // Get goal node to pre-compute euristics
-    Node* goal_node = &graph_[goal_pos_.first][goal_pos_.second];
-    goal_node->ComputeDistance(*goal_node);
-
-    int x_dif[4] = {1, -1, 0, 0};
-    int y_dif[4] = {0, 0, 1, -1};
-    char movement = {"R", }
-    for (size_t i = 0; i < map_.size(); i++)
-      for (size_t j = 0; j < map_[0].size(); j++)  // Each elem of map
-        if (map_[i][j]) {                          // If its walkable
-          // Fill node info (h, child_ids)
-          Node* current_node = &graph_[i][j];
-          current_node->ComputeDistance(*goal_node);  // Aprox distance to goal
-          for (size_t a = 0; a < 4; a++)  // Childs
-            if (map_[i + x_dif[a]]
-                    [j + y_dif[a]]) {  // If walkable append as connected
-              current_node->child_pos.push_back(
-                  position(i + x_dif[a], j + y_dif[a]));
-            }
-        }
-  }
-
-  int size_x_, size_y_;  /// Shape of map
-  position start_pos_, goal_pos_;         /// Ids of the start and end nodes
-  std::vector<std::vector<bool>> map_;    /// 1 == walkable path, 0 == blocked
-  std::vector<std::vector<Node>> graph_;  // Stores node info
 };
 
+GameInfo ReadMap(const size_t& size_x, const size_t& size_y) {
+  GameInfo game_info(size_x, size_y);
+  game_info.map =
+      std::vector<std::vector<bool>>(size_x, std::vector<bool>(size_y, false));
+  for (size_t i = 0; i < game_info.map.size(); i++)
+    for (size_t j = 0; j < game_info.map[0].size(); j++) {
+      char c;
+      std::cin >> c;
+      std::string element = map_elements[c];
+      if (element == "EMPTY" || element == "GOAL" || element == "PLAYER") {
+        game_info.map[i][j] = true;
+        if (element == "GOAL") game_info.start_pos = position(i, j);
+        if (element == "PLAYER") game_info.goal_pos = position(i, j);
+      }
+      if (element == "DONE") {
+        game_info.solvability = Solvable::solved;
+        return game_info;
+      }
+      if (element == "IMPOSSIBLE") {
+        game_info.solvability = Solvable::impossible;
+        return game_info;
+      }
+    }
+  return game_info;
+}
+
+Solvable FindPath(std::string* solution) {}
+
+// Populates graph_ private variable
+void BuildGraph(GameInfo* game_info) {
+  // Initialize graph
+  std::vector<std::vector<Node>> graph(game_info->size_x,
+                                       std::vector<Node>(game_info->size_y));
+  game_info->graph = graph;
+
+  // Get goal node to pre-compute euristics
+  Node* goal_node = &(
+      game_info->graph[game_info->goal_pos.first][game_info->goal_pos.second]);
+  goal_node->ComputeDistance(*goal_node);
+
+  int x_dif[4] = {1, -1, 0, 0};
+  int y_dif[4] = {0, 0, 1, -1};
+  char movement[4] = {'R', 'L', 'U', 'D'};
+  for (size_t i = 0; i < game_info->size_x; i++)
+    for (size_t j = 0; j < game_info->size_y; j++)  // Each elem of map
+      if (game_info->map[i][j]) {                   // If its walkable
+        // Fill node info (h, child_ids)
+        Node* current_node = &(game_info->graph[i][j]);
+        current_node->ComputeDistance(*goal_node);  // Aprox distance to goal
+        for (size_t a = 0; a < 4; a++)              // Childs
+          if (game_info
+                  ->map[i + x_dif[a]]
+                       [j + y_dif[a]]) {  // If walkable append as connected
+            current_node->child_pos.push_back(
+                Connection(position(i + x_dif[a], j + y_dif[a]), movement[a]));
+          }
+      }
+}
 };  // namespace sokoban
 
 int main() {
-  sokoban::Game game(6, 8);
-  sokoban::Solvable solvable = game.ReadMap();
+  sokoban::GameInfo game = sokoban::ReadMap(6, 8);
   std::string solution = "";
-  if (solvable == sokoban::Solvable::unknown) {
-    // TODO(oleguer): Solve it
+  if (game.solvability == sokoban::Solvable::unknown) { // If solvability is unknown, solve it
+    BuildGraph(&game);
+    
   }
 
-  switch (solvable) {
+  switch (game.solvability) {
     case sokoban::Solvable::impossible:
       std::cout << "no path" << std::endl;
       break;
