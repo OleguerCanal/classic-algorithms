@@ -1,5 +1,7 @@
 #include <iostream>
+#include <iterator>
 #include <queue>
+#include <stack>
 #include <unordered_set>
 
 // Define a node of the graph
@@ -16,7 +18,7 @@ struct Graph {
   explicit Graph(Node* node) : root(node) {}
 
   void BFS() {
-    std::queue<Node*> nodes_to_visit;
+    std::queue<Node*> nodes_to_visit;  // Push nodes to list
     nodes_to_visit.push(root);
 
     while (!nodes_to_visit.empty()) {
@@ -28,7 +30,24 @@ struct Graph {
       for (it = node->childs.begin(); it != node->childs.end(); it++)
         nodes_to_visit.push(*it);
     }
-      std::cout << std::endl;
+    std::cout << std::endl;
+  }
+
+  void DFS() {
+    std::stack<Node*> nodes_to_visit;
+    nodes_to_visit.push(root);
+
+    while (!nodes_to_visit.empty()) {
+      Node* node = nodes_to_visit.top();
+      nodes_to_visit.pop();
+      std::cout << node->val << ", ";
+
+      std::unordered_set<Node*>::iterator it;
+      for (it = node->childs.begin(); it != node->childs.end(); ++it) {
+        nodes_to_visit.push(*it);
+      }
+    }
+    std::cout << std::endl;
   }
 };
 
@@ -59,4 +78,5 @@ int main() {
   // Idea, define a graph and implement BFS
   Graph graph = constructExampleGraph();
   graph.BFS();  // Performs a BFS traversal of the graph, printing node values
+  graph.DFS();  // Performs a DFS traversal of the graph, printing node values
 }
