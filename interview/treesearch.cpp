@@ -1,8 +1,11 @@
+#include <stdlib.h>
+
 #include <iostream>
 #include <iterator>
 #include <queue>
 #include <stack>
 #include <unordered_set>
+
 
 // Define a node of the graph
 struct Node {
@@ -49,6 +52,27 @@ struct Graph {
     }
     std::cout << std::endl;
   }
+
+  // BFS Cheking repetition
+  void noRepeatBFS() {
+    std::queue<Node*> nodes_to_visit;
+    std::unordered_set<Node*> visited_nodes;  // Make sure we dont repeat nodes
+    nodes_to_visit.push(root);
+
+    while (!nodes_to_visit.empty()) {
+      Node* node = nodes_to_visit.front();
+      nodes_to_visit.pop();
+      visited_nodes.insert(node);
+
+      std::cout << node->val << ", ";
+      for (auto it = node->childs.begin(); it != node->childs.end(); ++it) {
+        auto finder = visited_nodes.find(*it);
+        if (finder == visited_nodes.end())  // If node not in visited set
+          nodes_to_visit.push(*it);
+      }
+    }
+    std::cout << std::endl;
+  }
 };
 
 // Builds a graph to test the algorithms
@@ -62,14 +86,20 @@ Graph constructExampleGraph() {
   Node* n4 = new Node(4);
   Node* n5 = new Node(5);
   Node* n6 = new Node(6);
+  Node* n7 = new Node(7);
+  Node* n8 = new Node(8);
+  Node* n9 = new Node(9);
 
   root->childs.insert(n1);
   root->childs.insert(n2);
   root->childs.insert(n3);
 
   n1->childs.insert(n4);
-  n3->childs.insert(n5);
-  n4->childs.insert(n6);
+  n2->childs.insert(n5);
+  n2->childs.insert(n6);
+  n5->childs.insert(n7);
+  n5->childs.insert(n8);
+  n5->childs.insert(n9);
   std::cout << "Tree built" << std::endl;
   return Graph(root);
 }
@@ -79,4 +109,6 @@ int main() {
   Graph graph = constructExampleGraph();
   graph.BFS();  // Performs a BFS traversal of the graph, printing node values
   graph.DFS();  // Performs a DFS traversal of the graph, printing node values
+  graph.noRepeatBFS();  // Performs a BFS traversal of the graph without
+                        // repetitions, printing node values
 }
