@@ -28,7 +28,7 @@ void DFS_preorder(Node* root) {
 }
 
 void DFS_inorder(struct Node *root) {
-    std::cout << "Postorder: ";
+    std::cout << "Inorder: ";
     std::stack<Node*> s;
     Node *node = root;
     while (node != NULL || !s.empty()) {

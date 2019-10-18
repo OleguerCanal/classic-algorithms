@@ -1,6 +1,6 @@
 #include "stdlib.h"
 #include <iostream>
-#include <queue>
+#include <stack>
 
 struct Node {
     int val;
@@ -43,17 +43,18 @@ struct BST {
     }
 
     void traverse() {
-        std::cout << "BFS: ";
-        std::queue<Node*> s;
-        s.push(root);
-        while (!s.empty()) {
-            Node* node = s.front();
+        std::cout << "Inorder: ";
+        std::stack<Node*> s;
+        Node *node = root;
+        while (node != NULL || !s.empty()) {
+            while (node !=  NULL) {  // If there is left subtree, explore it
+                s.push(node);
+                node = node->left;
+            }
+            node = s.top();  // Otherwise, go for the top of the list
             s.pop();
             std::cout << node->val << " ";
-            if (node->left != NULL)
-                s.push(node->left);
-            if (node->right != NULL)
-                s.push(node->right);
+            node = node->right;
         }
         std::cout << std::endl;
     }
