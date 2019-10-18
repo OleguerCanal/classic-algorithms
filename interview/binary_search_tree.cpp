@@ -1,6 +1,7 @@
 #include "stdlib.h"
 #include <iostream>
 #include <stack>
+#include <vector>
 
 struct Node {
     int val;
@@ -42,8 +43,8 @@ struct BST {
         // }
     }
 
-    void traverse() {
-        std::cout << "Inorder: ";
+    std::vector<Node*> ordered_nodes() {
+        std::vector<Node*> ordered;
         std::stack<Node*> s;
         Node *node = root;
         while (node != NULL || !s.empty()) {
@@ -53,11 +54,41 @@ struct BST {
             }
             node = s.top();  // Otherwise, go for the top of the list
             s.pop();
-            std::cout << node->val << " ";
+            ordered.push_back(node);
             node = node->right;
+        }
+        return ordered;
+    }
+
+    Node* build_balanced(const std::vector<Node*>& ordered_nodes, int begin, int end) {
+        if (begin > end) {
+            return NULL;
+        }
+        int mid_ind = (begin + end)/2;
+        Node* mid_node = ordered_nodes[mid_ind];
+        mid_node->left = build_balanced(ordered_nodes, begin, mid_ind-1);
+        mid_node->right = build_balanced(ordered_nodes, mid_ind+1, end);
+        return mid_node;
+    }
+
+    void balance() {
+        // OBS: Self-balancing binary search trees are better for the job (red-black tree)
+        // 1. Traverse in order to get sorted array of the nodes
+        std::vector<Node*> nodes = ordered_nodes();
+
+        // 2. Build balanced tree from sortted array
+        root = build_balanced(nodes, 0, nodes.size()-1);
+    }
+
+    void print() {
+        std::vector<Node*> nodes = ordered_nodes();
+        std::cout << "Inorder: ";
+        for (auto node : nodes) {
+            std::cout << node->val << " ";
         }
         std::cout << std::endl;
     }
+
 };
 
 int main() {
@@ -74,7 +105,9 @@ int main() {
     bst.insert(n1);
     bst.insert(n4);
     bst.insert(n2);
-    bst.traverse();
+    bst.print();
+    bst.balance();
+    bst.print();
 
     // Delete graph
     delete n1;
