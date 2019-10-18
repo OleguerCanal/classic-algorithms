@@ -1,5 +1,29 @@
 # Memory management notes
 
+## Pointers
+Positions in memory:
+Variables:
+```cpp
+  Entity entity;  // Value based: Local to this function stack frame
+  Entity* entity_ptr = &entity;
+  std::cout << (*entity_ptr).GetField() << std::endl;  // Option 1 To get value of pointer
+  std::cout << entity_ptr->GetField() << std::endl;  // Option 2 (Wrapper) To get value of pointer
+```
+Params in functions:
+
+```cpp
+  Something getSomething(const Entity& entity) {  // Pass by reference (always protected by const
+  }
+```
+
+
+```cpp
+  void doSomethingInPlace(Entity* entity) {  // Pass pointer
+  }
+  
+  doSomethingInPlace(&entity);  // User will knows variable will get changed
+```
+
 ## Stack allocation:
 Example:
 ```cpp
