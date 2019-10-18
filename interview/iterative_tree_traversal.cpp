@@ -44,23 +44,6 @@ void DFS_inorder(struct Node *root) {
     std::cout << std::endl;
 }
 
-void DFS_postorder(struct Node *root) {
-    std::cout << "Inorder: ";
-    std::stack<Node*> s;
-    Node *node = root;
-    while (node != NULL || !s.empty()) {
-        while (node !=  NULL) {  // If there is left subtree, explore it
-            s.push(node);
-            node = node->right;
-        }
-        node = s.top();  // Otherwise, go for the top of the list
-        s.pop();
-        std::cout << node->val << " ";
-        node = node->left;
-    }
-    std::cout << std::endl;
-}
-
 void BFS(Node* root) {
     std::cout << "BFS: ";
     std::queue<Node*> s;
@@ -97,7 +80,6 @@ int main() {
     // Test traversals
     DFS_preorder(n1);
     DFS_inorder(n1);
-    DFS_postorder(n1);
     BFS(n1);
 
 
