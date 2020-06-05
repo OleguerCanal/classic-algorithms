@@ -1,5 +1,5 @@
 # Classic Algorithms
-Data structures and common algorithms playground. As wel
+Data structures and common algorithms playground. As well as some theory notes.
 As always more an exercice for me to think their implementation rather than anything useful.
 
 ## Contents
