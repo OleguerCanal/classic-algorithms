@@ -1,50 +1,54 @@
 # Classic Algorithms
-Data structures and common algorithms playground. As wel
+Data structures and common algorithms playground. As well as some theory notes.
 As always more an exercice for me to think their implementation rather than anything useful.
 
-## Contents
+## Theory
 
-### Theory
+- [Memory Management in C++](theory/memory_management.md)
+- LeetCode-like problems approach guide
 
-[theory/memory_management.md](Memory Management in C++)
-LeetCode-like problems approach guide
+## Array Sorting:
 
-### Array Sorting:
+- Bubble Sort (Serial)
+- Bubble Sort / Odd-Even Sort (Parallel)
+- Merge Sort (Parallel)
+- Heap Sort (Serial)
+- Quick Sort (Serial)
 
-Bubble Sort (Serial)
-Bubble Sort / Odd-Even Sort (Parallel)
-Merge Sort (Parallel)
-Heap Sort (Serial)
-Quick Sort (Serial)
+## Tree Traversal:
 
-### Uninformed Tree Search:
+### Recursive
+- Pre-order DFS
+- In-order DFS
+- Post-order DFS
 
-Pre-order DFS
-In-order DFS
-Post-order DFS
+### Iterative
+- Pre-order DFS
+- In-order DFS
+- Post-order DFS
 
-### Graph Search:
+## Graph Search:
 
-**Uninformed:**
+### Uninformed:
 
-BFS (Breath First Search)
-DFS (Depth First Search)
+- BFS (Breath First Search)
+- DFS (Depth First Search)
 
-**Informed:**
+### Informed:
 
-Greedy (Expand lowest heuristic node)
-Dijkstra (Expand lowest acquisition_cost node)
-A* (Expand lowest heuristic + acquisition_cost node)
+- Greedy (Expand lowest heuristic node)
+- Dijkstra (Expand lowest acquisition_cost node)
+- A* (Expand lowest heuristic + acquisition_cost node)
 
-### MetaHeuristics for Optimization:
+## Metaheuristics:
 
-Genetic algorithm
-Simulated Annealing
-Ant Colony
-Tabu Search
+- Genetic algorithm
+- Simulated Annealing
+- Ant Colony
+- Tabu Search
 
-### Data Structures
+## Data Structures
 
-Tree
-BST (Binnary Search Tree)
-Graph
+- Tree
+- BST (Binnary Search Tree)
+- Graph
