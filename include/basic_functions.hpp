@@ -1,8 +1,7 @@
-#include "basic_functions.hpp"
+#include <stdlib.h>
 
 namespace basic{
   const double pi = std::acos(-1);
-
 
   float sign(float v) {
     if (v < 0) return -1.f;
