@@ -3,20 +3,14 @@
 #include <stack>
 #include <queue>
 
-struct Node {
-    int val;
-    Node* left = NULL;
-    Node* right = NULL;
+#include "binnary_tree.hpp"
 
-    explicit Node(int data) : val(data) {}
-};
-
-void DFS_preorder(Node* root) {
+void DFS_preorder(const binnary_tree::Tree &tree) {
     std::cout << "Preorder: ";
-    std::stack<Node*> s;
-    s.push(root);
+    std::stack<binnary_tree::Node*> s;
+    s.push(tree.root);
     while (!s.empty()) {
-        Node* node = s.top();
+        binnary_tree::Node* node = s.top();
         s.pop();
         std::cout << node->val << " ";
         if (node->right != NULL)
@@ -27,10 +21,10 @@ void DFS_preorder(Node* root) {
     std::cout << std::endl;
 }
 
-void DFS_inorder(struct Node *root) {
+void DFS_inorder(const binnary_tree::Tree &tree) {
     std::cout << "Inorder: ";
-    std::stack<Node*> s;
-    Node *node = root;
+    std::stack<binnary_tree::Node*> s;
+    binnary_tree::Node *node = tree.root;
     while (node != NULL || !s.empty()) {
         while (node !=  NULL) {  // If there is left subtree, explore it
             s.push(node);
@@ -44,12 +38,12 @@ void DFS_inorder(struct Node *root) {
     std::cout << std::endl;
 }
 
-void BFS(Node* root) {
+void BFS(const binnary_tree::Tree &tree) {
     std::cout << "BFS: ";
-    std::queue<Node*> s;
-    s.push(root);
+    std::queue<binnary_tree::Node*> s;
+    s.push(tree.root);
     while (!s.empty()) {
-        Node* node = s.front();
+        binnary_tree::Node* node = s.front();
         s.pop();
         std::cout << node->val << " ";
         if (node->left != NULL)
@@ -61,33 +55,9 @@ void BFS(Node* root) {
 }
 
 int main() {
-    // Construct sample graph
-    Node* n1 = new Node(1);
-    Node* n2 = new Node(2);
-    Node* n3 = new Node(3);
-    Node* n4 = new Node(4);
-    Node* n5 = new Node(5);
-    Node* n6 = new Node(6);
-    Node* n7 = new Node(7);
-
-    n1->left = n2;
-    n1->right = n3;
-    n2->left = n4;
-    n2->right = n5;
-    n3->left = n6;
-    n3->right = n7;
-
+    binnary_tree::Tree tree = binnary_tree::buildExampleBinTree();
     // Test traversals
-    DFS_preorder(n1);
-    DFS_inorder(n1);
-    BFS(n1);
-
-
-    // Delete graph
-    delete n1;
-    delete n2;
-    delete n3;
-    delete n4;
-    delete n5;
-    delete n6;
+    DFS_preorder(tree);
+    DFS_inorder(tree);
+    BFS(tree);
 }
