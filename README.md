@@ -9,7 +9,7 @@ As always more an exercice for me to think their implementation rather than anyt
 
 ## Array Sorting:
 
-- Bubble Sort (Serial)
+- [Bubble Sort](sorting/bubble_sort.cpp) (Serial)
 - Bubble Sort / Odd-Even Sort (Parallel)
 - Merge Sort (Parallel)
 - Heap Sort (Serial)
@@ -52,3 +52,8 @@ As always more an exercice for me to think their implementation rather than anyt
 - Tree
 - BST (Binnary Search Tree)
 - Graph
+
+
+# To run an algorithm:
+
+`./run.sh path_to_cpp_file`
