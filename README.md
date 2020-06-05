@@ -23,9 +23,10 @@ As always more an exercice for me to think their implementation rather than anyt
 - Post-order DFS
 
 ### Iterative
-- Pre-order DFS
-- In-order DFS
+- [Pre-order DFS](tree_traversal/iterative_tree_traversal.cpp)
+- [In-order DFS](tree_traversal/iterative_tree_traversal.cpp)
 - Post-order DFS
+- [BFS](tree_traversal/iterative_tree_traversal.cpp)
 
 ## Graph Search:
 
@@ -49,9 +50,9 @@ As always more an exercice for me to think their implementation rather than anyt
 
 ## Data Structures
 
-- Tree
+- [BT](include/binnary_tree.hpp) (Binnary Tree)
 - BST (Binnary Search Tree)
-- Graph
+- [Graph](include/graph.hpp)
 
 
 # To run an algorithm:
