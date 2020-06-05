@@ -17,7 +17,7 @@ As always more an exercice for me to think their implementation rather than anyt
 - Heap Sort (Serial)
 - Quick Sort (Serial)
 
-### Uninformed Tree Search:
+### Tree Traversal:
 
 - Pre-order DFS
 - In-order DFS
