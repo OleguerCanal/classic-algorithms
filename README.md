@@ -2,14 +2,12 @@
 Data structures and common algorithms playground. As well as some theory notes.
 As always more an exercice for me to think their implementation rather than anything useful.
 
-## Contents
-
-### Theory
+## Theory
 
 - [Memory Management in C++](theory/memory_management.md)
 - LeetCode-like problems approach guide
 
-### Array Sorting:
+## Array Sorting:
 
 - Bubble Sort (Serial)
 - Bubble Sort / Odd-Even Sort (Parallel)
@@ -17,33 +15,39 @@ As always more an exercice for me to think their implementation rather than anyt
 - Heap Sort (Serial)
 - Quick Sort (Serial)
 
-### Tree Traversal:
+## Tree Traversal:
 
+### Recursive
 - Pre-order DFS
 - In-order DFS
 - Post-order DFS
 
-### Graph Search:
+### Iterative
+- Pre-order DFS
+- In-order DFS
+- Post-order DFS
 
-**Uninformed:**
+## Graph Search:
+
+### Uninformed:
 
 - BFS (Breath First Search)
 - DFS (Depth First Search)
 
-**Informed:**
+### Informed:
 
 - Greedy (Expand lowest heuristic node)
 - Dijkstra (Expand lowest acquisition_cost node)
 - A* (Expand lowest heuristic + acquisition_cost node)
 
-### Metaheuristics for Optimization:
+## Metaheuristics:
 
 - Genetic algorithm
 - Simulated Annealing
 - Ant Colony
 - Tabu Search
 
-### Data Structures
+## Data Structures
 
 - Tree
 - BST (Binnary Search Tree)
