@@ -6,8 +6,8 @@ As always more an exercice for me to think their implementation rather than anyt
 
 ### Theory
 
-[theory/memory_management.md](Memory Management in C++)
-LeetCode-like problems approach guide
+- [Memory Management in C++](theory/memory_management.md)
+- LeetCode-like problems approach guide
 
 ### Array Sorting:
 
