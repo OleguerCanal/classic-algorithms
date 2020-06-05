@@ -36,7 +36,7 @@ As always more an exercice for me to think their implementation rather than anyt
 - Dijkstra (Expand lowest acquisition_cost node)
 - A* (Expand lowest heuristic + acquisition_cost node)
 
-### MetaHeuristics for Optimization:
+### Metaheuristics for Optimization:
 
 - Genetic algorithm
 - Simulated Annealing
