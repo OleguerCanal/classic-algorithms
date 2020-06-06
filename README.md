@@ -1,5 +1,6 @@
 # Classic Algorithms
 Data structures and common algorithms playground. As well as some theory notes.
+Only dependencies are STD library and MPI for parallel implementations.
 As always more an exercice for me to think their implementation rather than anything useful.
 
 ## Theory
@@ -10,10 +11,10 @@ As always more an exercice for me to think their implementation rather than anyt
 ## Array Sorting:
 
 - [Bubble Sort](sorting/bubble_sort.cpp) (Serial)
-- Odd-Even Sort (Parallel)
-- Merge Sort (Parallel)
 - Heap Sort (Serial)
 - Quick Sort (Serial)
+- Odd-Even Sort (Parallel)
+- Merge Sort (Parallel)
 
 ## Tree Traversal:
 
@@ -57,4 +58,8 @@ As always more an exercice for me to think their implementation rather than anyt
 
 # To run an algorithm:
 
-`./run.sh path_to_cpp_file`
+If serial algorithm: 
+`./run_serial.sh <path_to_cpp_file>`
+
+If parallel algorithm:
+`./run_parallel.sh <path_to_cpp_file> <processors_to_use>`
