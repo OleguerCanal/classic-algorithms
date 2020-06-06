@@ -10,7 +10,7 @@ As always more an exercice for me to think their implementation rather than anyt
 ## Array Sorting:
 
 - [Bubble Sort](sorting/bubble_sort.cpp) (Serial)
-- Bubble Sort / Odd-Even Sort (Parallel)
+- Odd-Even Sort (Parallel)
 - Merge Sort (Parallel)
 - Heap Sort (Serial)
 - Quick Sort (Serial)
