@@ -13,8 +13,7 @@ As always more an exercice for me to think their implementation rather than anyt
 - [Bubble Sort](sorting/bubble_sort.cpp) (Serial)
 - Heap Sort (Serial)
 - Quick Sort (Serial)
-- Odd-Even Sort (Parallel)
-- Merge Sort (Parallel)
+- [Merge Sort](sorting/merge_sort_parallel.cpp) (**Parallel**)
 
 ## Tree Traversal:
 
@@ -36,10 +35,14 @@ As always more an exercice for me to think their implementation rather than anyt
 - BFS (Breath First Search)
 - DFS (Depth First Search)
 
-### Informed:
+### Informed
+
+#### Without heuristic:
+- Dijkstra (Expand lowest acquisition_cost node)
+
+#### Heuristic available:
 
 - Greedy (Expand lowest heuristic node)
-- Dijkstra (Expand lowest acquisition_cost node)
 - A* (Expand lowest heuristic + acquisition_cost node)
 
 ## Metaheuristics:

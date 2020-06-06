@@ -12,17 +12,18 @@
 
 namespace utils
 {
-  const double pi = std::acos(-1);
 
-  float sign(float v)
+  // HELPERS ---------------------------------------------------
+  std::vector<float> get_random_vector(size_t size, int seed)
   {
-    if (v < 0)
-      return -1.f;
-    if (v > 0)
-      return 1.f;
-    return 0.f;
+    srandom(seed);
+    std::vector<float> vect(size);
+    for (size_t i = 0; i < size; i++)
+      vect[i] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+    return vect;
   }
 
+  // TIMING ----------------------------------------------------
   // Start timer
   time_t tic()
   {
@@ -36,9 +37,13 @@ namespace utils
     std::cout << "-->[TIME]: " << print << ": " << ((float)t) / CLOCKS_PER_SEC << '\n';
   }
 
+  // PRINTING -------------------------------------------------
   // Prints object
-  void print(std::vector<int> vec)
+  template <typename T = int>
+  void print(std::vector<T> vec, std::string msg = "")
   {
+    if (msg != "")
+      std::cout << msg << ": ";
     for (size_t i = 0; i < vec.size(); i++)
       std::cout << vec[i] << " ";
     std::cout << std::endl;
@@ -46,15 +51,16 @@ namespace utils
 
   void print(graph::Graph graph)
   {
-    std::queue<graph::Node*> nodes_to_visit;  // Push nodes to list
+    std::queue<graph::Node *> nodes_to_visit; // Push nodes to list
     nodes_to_visit.push(graph.root);
 
-    while (!nodes_to_visit.empty()) {
-      graph::Node* node = nodes_to_visit.front();
+    while (!nodes_to_visit.empty())
+    {
+      graph::Node *node = nodes_to_visit.front();
       nodes_to_visit.pop();
       std::cout << node->val << ", ";
 
-      std::unordered_set<graph::Node*>::iterator it;
+      std::unordered_set<graph::Node *>::iterator it;
       for (it = node->childs.begin(); it != node->childs.end(); it++)
         nodes_to_visit.push(*it);
     }
