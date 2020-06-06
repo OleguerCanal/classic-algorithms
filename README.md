@@ -18,9 +18,9 @@ As always more an exercice for me to think their implementation rather than anyt
 ## Tree Traversal:
 
 ### Recursive
-- Pre-order DFS
-- In-order DFS
-- Post-order DFS
+- [Pre-order DFS](tree_traversal/recursive_tree_traversal.cpp)
+- [In-order DFS](tree_traversal/recursive_tree_traversal.cpp)
+- [Post-order DFS](tree_traversal/recursive_tree_traversal.cpp)
 
 ### Iterative
 - [Pre-order DFS](tree_traversal/iterative_tree_traversal.cpp)
