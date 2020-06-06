@@ -8,14 +8,14 @@ As always more an exercice for me to think their implementation rather than anyt
 - [Memory Management in C++](theory/memory_management.md)
 - LeetCode-like problems approach guide
 
-## Array Sorting:
+## Array Sorting
 
 - [Bubble Sort](sorting/bubble_sort.cpp) (Serial)
 - Heap Sort (Serial)
 - Quick Sort (Serial)
 - [Merge Sort](sorting/merge_sort_parallel.cpp) (**Parallel**)
 
-## Tree Traversal:
+## Tree Traversal
 
 ### Recursive
 - [Pre-order DFS](tree_traversal/recursive_tree_traversal.cpp)
@@ -28,14 +28,14 @@ As always more an exercice for me to think their implementation rather than anyt
 - Post-order DFS
 - [BFS](tree_traversal/iterative_tree_traversal.cpp)
 
-## Graph Search:
+## Graph Search
 
 ### Uninformed:
 
 - BFS (Breath First Search)
 - DFS (Depth First Search)
 
-### Informed
+### Informed:
 
 #### Without heuristic:
 - Dijkstra (Expand lowest acquisition_cost node)
@@ -45,7 +45,7 @@ As always more an exercice for me to think their implementation rather than anyt
 - Greedy (Expand lowest heuristic node)
 - A* (Expand lowest heuristic + acquisition_cost node)
 
-## Metaheuristics:
+## Metaheuristics
 
 - Genetic algorithm
 - Simulated Annealing
@@ -59,7 +59,7 @@ As always more an exercice for me to think their implementation rather than anyt
 - [Graph](include/graph.hpp)
 
 
-# To run an algorithm:
+# To test an algorithm
 
 If serial algorithm: 
 `./run_serial.sh <path_to_cpp_file>`
