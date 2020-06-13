@@ -8,6 +8,10 @@ As always more an exercice for me to think their implementation rather than anyt
 - [Memory Management in C++](theory/memory_management.md)
 - LeetCode-like problems approach guide
 
+## Lists
+
+- [Reverse](lists/reverse.cpp)
+
 ## Array Sorting
 
 - [Bubble Sort](sorting/bubble_sort.cpp) (Serial)
@@ -54,6 +58,7 @@ As always more an exercice for me to think their implementation rather than anyt
 
 ## Data Structures
 
+- [Singly Linked List](include/single_link_list.hpp)
 - [BT](include/binnary_tree.hpp) (Binnary Tree)
 - BST (Binnary Search Tree)
 - [Graph](include/graph.hpp)
