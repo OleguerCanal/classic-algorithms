@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "graph.hpp"
+#include "single_link_list.hpp"
 
 namespace utils
 {
@@ -46,6 +47,16 @@ namespace utils
       std::cout << msg << ": ";
     for (size_t i = 0; i < vec.size(); i++)
       std::cout << vec[i] << " ";
+    std::cout << std::endl;
+  }
+
+  void print(single_link_list::ListNode *node)
+  {
+    while (node != nullptr)
+    {
+      std::cout << node->val << ", ";
+      node = node->next;
+    }
     std::cout << std::endl;
   }
 
