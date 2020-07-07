@@ -4,10 +4,10 @@
 
 #include "utils.hpp"
 
-/// BUBBLE SORT CHARACTERISTICS
-/// Average Time: O(n^2)
-/// Worst Time: O(n^2)
-/// Space: O(1)
+/// HEAP SORT CHARACTERISTICS
+/// Average Time: O(log(n))
+/// Worst Time: O(log(n))
+/// Extra Space: O(n)
 
 void heap_sort(std::vector<int> *vect)
 {
