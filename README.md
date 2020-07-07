@@ -17,7 +17,7 @@ More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercana
 ## Array Sorting
 
 - [Bubble Sort](sorting/bubble_sort.cpp) (Serial)
-- Heap Sort (Serial)
+- [Heap Sort](sorting/heap_sort.cpp) (Serial)
 - Quick Sort (Serial)
 - [Merge Sort](sorting/merge_sort_parallel.cpp) (**Parallel**)
 
