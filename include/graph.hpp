@@ -16,8 +16,10 @@ namespace graph
 
   struct Graph
   {
-    Node *root;
+    Node* root;
+    Node* destination;
     explicit Graph(Node *node) : root(node) {}
+    explicit Graph(Node *origin, Node *dest) : root(origin), destination(dest) {}
   };
 
   // Builds a graph to test the algorithms
@@ -78,6 +80,6 @@ namespace graph
     n5->childs.insert(n8);
     n5->childs.insert(n9);
     std::cout << "Tree built" << std::endl;
-    return Graph(origin);
+    return Graph(origin, destination);
   }
 } // namespace graph
