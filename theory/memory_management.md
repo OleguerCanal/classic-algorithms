@@ -37,7 +37,7 @@ Example:
 
 **Cons:**
 - Can only be used in this scope (between these brackets)
-- Objects can't be very very big (STACK memory is fixed to ~2MB)
+- Objects can't be very very big (STACK memory is fixed to ~2MB ~= 500x500 32bit numbers)
 
 
 ## Heap allocation:
