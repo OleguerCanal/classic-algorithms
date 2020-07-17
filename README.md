@@ -60,6 +60,7 @@ More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercana
 
 ## Data Structures
 
+- [Array](include/array.hpp) (Stack allocated)
 - [Singly Linked List](include/single_link_list.hpp)
 - [BT](include/binnary_tree.hpp) (Binnary Tree)
 - BST (Binnary Search Tree)
