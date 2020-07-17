@@ -12,7 +12,8 @@ Variables:
 Params in functions:
 
 ```cpp
-  Something getSomething(const Entity& entity) {  // Pass by reference (always protected by const
+  Something getSomething(const Entity& entity) {  // Pass by reference (always protected by const)
+  // OBS: This something will be copied, if possible try to avoid returning things
   }
 ```
 
@@ -21,10 +22,12 @@ Params in functions:
   void doSomethingInPlace(Entity* entity) {  // Pass pointer
   }
   
-  doSomethingInPlace(&entity);  // User will knows variable will get changed
+  doSomethingInPlace(&entity);  // User is aware variable will get changed
 ```
 
 ## Stack allocation:
+Stores temporary variables created by each function with a LIFO data structure managed by CPU.
+
 Example:
 ```cpp
   Entity entity("oleguer");  // Value based: Local to this function stack frame
@@ -41,7 +44,7 @@ Example:
 
 
 ## Heap allocation:
-Example of dinamically allocated memory:
+Example of dynamically allocated memory:
 ```cpp
   Entity *entity = new Entity("oleguer");  // Created in heap
   std::cout << (*entity).GetName() << std::endl;  // Access pointer value
@@ -91,6 +94,13 @@ Example of dinamically allocated memory:
 ```cpp
   int* array = new int[50];
   destroy[] array;
+```
+
+**OBS**: std::vector allocates elems in heap:
+```cpp
+vector<Type> vect; // Allocates header info, on the stack, but the elements heap
+vector<Type> *vect = new vector<Type>; // Allocates everything in heap
+// Elements are in the heap because they can change dynamically
 ```
 
 ## Pointers
