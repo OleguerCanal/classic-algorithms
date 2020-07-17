@@ -1,10 +1,10 @@
 # Classic Algorithms
 Data structures and common algorithms playground. As well as some theory notes.
 Only dependencies are STD library and MPI for parallel implementations.
-As always more an exercice for me to think their implementation rather than anything useful.
+As always more an exercise for me to think their implementation rather than anything useful.
 
-**NOTE**: A lot of the theoretical content and ideas are from [The Cherno](https://www.youtube.com/channel/UCQ-W1KE9EYfdxhL6S4twUNw) YouTube channel.
-He has great c++ content and you defo should check it out.
+**NOTE**: Some theoretical content and ideas are from [The Cherno](https://www.youtube.com/channel/UCQ-W1KE9EYfdxhL6S4twUNw) YouTube channel.
+Likewise, other ideas are from this [book](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850).
 
 More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercanal/)
 
@@ -63,11 +63,15 @@ More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercana
 
 ## Data Structures
 
-- [Array](include/array.hpp) (Stack allocated)
+- Stack allocated [Array](include/array.hpp). Usage [example](ds_tests/array_test.cpp). STD implementation [here](https://en.cppreference.com/w/cpp/container/array).
+- Vector
 - [Singly Linked List](include/single_link_list.hpp)
+- Double Linked List
 - [BT](include/binnary_tree.hpp) (Binnary Tree)
 - BST (Binnary Search Tree)
 - [Graph](include/graph.hpp)
+- Hash table
+
 
 
 # To test an algorithm
