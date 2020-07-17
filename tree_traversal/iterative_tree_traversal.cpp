@@ -5,12 +5,14 @@
 
 #include "binnary_tree.hpp"
 
-void DFS_preorder(const binnary_tree::Tree &tree) {
+using namespace binnary_tree;
+
+void DFS_preorder(const Tree &tree) {
     std::cout << "Preorder: ";
-    std::stack<binnary_tree::Node*> s;
+    std::stack<Node*> s;
     s.push(tree.root);
     while (!s.empty()) {
-        binnary_tree::Node* node = s.top();
+        Node* node = s.top();
         s.pop();
         std::cout << node->val << " ";
         if (node->right != NULL)
@@ -21,10 +23,10 @@ void DFS_preorder(const binnary_tree::Tree &tree) {
     std::cout << std::endl;
 }
 
-void DFS_inorder(const binnary_tree::Tree &tree) {
+void DFS_inorder(const Tree &tree) {
     std::cout << "Inorder: ";
-    std::stack<binnary_tree::Node*> s;
-    binnary_tree::Node *node = tree.root;
+    std::stack<Node*> s;
+    Node *node = tree.root;
     while (node != NULL || !s.empty()) {
         while (node !=  NULL) {  // If there is left subtree, explore it
             s.push(node);
@@ -38,12 +40,12 @@ void DFS_inorder(const binnary_tree::Tree &tree) {
     std::cout << std::endl;
 }
 
-void BFS(const binnary_tree::Tree &tree) {
+void BFS(const Tree &tree) {
     std::cout << "BFS: ";
-    std::queue<binnary_tree::Node*> s;
+    std::queue<Node*> s;
     s.push(tree.root);
     while (!s.empty()) {
-        binnary_tree::Node* node = s.front();
+        Node* node = s.front();
         s.pop();
         std::cout << node->val << " ";
         if (node->left != NULL)
@@ -55,7 +57,7 @@ void BFS(const binnary_tree::Tree &tree) {
 }
 
 int main() {
-    binnary_tree::Tree tree = binnary_tree::buildExampleBinTree();
+    Tree tree = buildExampleBinTree();
     // Test traversals
     DFS_preorder(tree);
     DFS_inorder(tree);
