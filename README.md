@@ -3,6 +3,9 @@ Data structures and common algorithms playground. As well as some theory notes.
 Only dependencies are STD library and MPI for parallel implementations.
 As always more an exercice for me to think their implementation rather than anything useful.
 
+**NOTE**: A lot of the theoretical content and ideas are from [The Cherno](https://www.youtube.com/channel/UCQ-W1KE9EYfdxhL6S4twUNw) YouTube channel.
+He has great c++ content and you defo should check it out.
+
 More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercanal/)
 
 ## Theory
