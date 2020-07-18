@@ -1,30 +1,5 @@
 # Memory management notes
 
-## Pointers
-Positions in memory:
-Variables:
-```cpp
-  Entity entity;  // Value based: Local to this function stack frame
-  Entity* entity_ptr = &entity;
-  std::cout << (*entity_ptr).GetField() << std::endl;  // Option 1 To get value of pointer
-  std::cout << entity_ptr->GetField() << std::endl;  // Option 2 (Wrapper) To get value of pointer
-```
-Params in functions:
-
-```cpp
-  Something getSomething(const Entity& entity) {  // Pass by reference (always protected by const)
-  // OBS: This something will be copied, if possible try to avoid returning things
-  }
-```
-
-
-```cpp
-  void doSomethingInPlace(Entity* entity) {  // Pass pointer
-  }
-  
-  doSomethingInPlace(&entity);  // User is aware variable will get changed
-```
-
 ## Stack allocation:
 Stores temporary variables created by each function with a LIFO data structure managed by CPU.
 
@@ -32,6 +7,12 @@ Example:
 ```cpp
   Entity entity("oleguer");  // Value based: Local to this function stack frame
   std::cout << entity.GetName() << std::endl;
+```
+
+Example:
+```cpp
+  bool* visited = (bool*) alloca(sizeof(bool)*n); // alloca reserves in stack memory. WARNING! Not recomended, If causes stack overflow, program behavior is undefined
+  memset(visited, false, n);
 ```
 
 **Pros:**
@@ -62,6 +43,12 @@ Example of dynamically allocated memory:
   // we could have done:  delete some_entity_pointer
   // And would have deleted the same object
   // (we can do this outside this scope)
+```
+
+Example:
+```cpp
+  bool* visited = (bool*) malloc(sizeof(bool)*n); // malloc reserves in heap memory. WARNING! Not recomended, If causes stack overflow, program behavior is undefined
+  memset(visited, false, n);
 ```
 
 **Pros:**
@@ -101,72 +88,5 @@ Example of dynamically allocated memory:
 vector<Type> vect; // Allocates header info, on the stack, but the elements heap
 vector<Type> *vect = new vector<Type>; // Allocates everything in heap
 // Elements are in the heap because they can change dynamically
-```
-
-## Pointers
-- Integer that holds a memory adress.
-**OBS**: type of pointer is irrelevant, its always an integer
-
-Example:
-```cpp
-  int var = 9;
-  int* ptr = &var;  // ptr holds where in memory we are storing var
-  *ptr = 10;  // Access the variable from the pointer
-  // Now var has a value of 10
-```
-
-**OBS:** Pointers are also variables, so we could have pointers of pointers (double pointers)
-```cpp
-  int var = 9;
-  int* ptr = &var;  // ptr is memory address of var
-  int** double_ptr = &ptr;  // double_ptr is memory address of ptr
-```
-
-## Smart pointers
-- Wrapper around raw pointer that automates **new**/**delete** call process in heap memory.
-
-### unique_ptr
-- Can't be copied (if one dies, it will free the memory its pointing to, so the other will be pointing nowhere)
-
-Example:
-```cpp
-  include <memory>  // Needs to be included to use cmart pointers
-  {
-    std::unique_ptr<Entity> entity = std::make_unique<Entity>();  // Gets created
-  }
-  // Here entity is automatically destroyed (out of scope)
-```
-
-### shared_ptr
-- Keeps track of how many references are there to that shared_ptr (once it gets to 0, its automatically destroyed)
-
-Example:
-```cpp
-  include <memory>  // Needs to be included to use cmart pointers
-  {
-    std::shared_ptr<Entity> e0;
-    {
-      std::shared_ptr<Entity> entity = std::make_shared<Entity>();  // Gets created (referennces count = 1)
-      e0 = entity;  // assigned to e0 (referennces count = 2)
-    }
-    // entity out of scope but doesnt get destryed (referennces count = 1)
-  }
-  // here the memory is freed, all references are dead (references count = 0)
-```
-
-### weak_ptr
-- Allows you to copy a shared_ptr without increasing ref count (useful to check if something is still alive without keeping it alive)
-
-Example:
-```cpp
-  include <memory>  // Needs to be included to use cmart pointers
-  {
-    std::weak_ptr<Entity> e0;
-    {
-      std::shared_ptr<Entity> entity = std::make_shared<Entity>();  // Gets created (referennces count = 1)
-      e0 = entity;  // assigned to e0 but since its weak: (referennces count = 1)
-    }
-    // entity out of scope gets destryed (referennces count = 0)
-  }
 ```
 

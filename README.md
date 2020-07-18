@@ -1,4 +1,4 @@
-# Classic Algorithms
+# Algorithmics
 Data structures and common algorithms playground. As well as some theory notes.
 Only dependencies are STD library and MPI for parallel implementations.
 As always more an exercise for me to think their implementation rather than anything useful.
@@ -10,7 +10,9 @@ More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercana
 
 ## Theory
 
-- [Memory Management in C++](theory/memory_management.md)
+- [Pointers](theory/pointers.md)
+- [Passing args to functions](theory/func_args.md)
+- [Memory Management](theory/memory_management.md)
 - LeetCode-like problems approach guide
 
 ## Lists
