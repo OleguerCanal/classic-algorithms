@@ -10,21 +10,27 @@ More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercana
 
 ## Theory
 
+- [Complexity](theory/complexity.md)
+- Bit manipulation
 - [Pointers](theory/pointers.md)
 - [Passing args to functions](theory/func_args.md)
 - [Memory Management](theory/memory_management.md)
-- LeetCode-like problems approach guide
+- Recursion
+- Dynamic programming
+- [Competitive programming problems approach guide](theory/comp_progr_guide.md)
 
 ## Lists
 
 - [Reverse](lists/reverse.cpp)
 
-## Array Sorting
+## Arrays
 
+- Binary search
 - [Bubble Sort](sorting/bubble_sort.cpp) (Serial)
 - [Heap Sort](sorting/heap_sort.cpp) (Serial)
 - Quick Sort (Serial)
 - [Merge Sort](sorting/merge_sort_parallel.cpp) (**Parallel**)
+
 
 ## Tree Traversal
 
@@ -69,8 +75,12 @@ More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercana
 - Vector
 - [Singly Linked List](include/single_link_list.hpp)
 - Double Linked List
+- Stack
+- Queue
 - [BT](include/binnary_tree.hpp) (Binnary Tree)
 - BST (Binnary Search Tree)
+- Heap
+- Trie
 - [Graph](include/graph.hpp)
 - Hash table
 
