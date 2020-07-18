@@ -12,7 +12,7 @@ More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercana
 
 - [Pointers](theory/pointers.md)
 - [Passing args to functions](theory/func_args.md)
-- [Memory Management](theory/memory_management.md)
+- [Memory management](theory/memory_management.md)
 - LeetCode-like problems approach guide
 
 ## Lists
