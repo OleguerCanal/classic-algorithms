@@ -15,12 +15,19 @@ namespace utils
 {
 
   // HELPERS ---------------------------------------------------
-  std::vector<float> get_random_vector(size_t size, int seed)
+
+  template<typename T>
+  std::vector<T> get_random_vector(size_t size, int seed, int max=100)
   {
     srandom(seed);
-    std::vector<float> vect(size);
-    for (size_t i = 0; i < size; i++)
-      vect[i] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+    std::vector<T> vect(size);
+    if (typeid(T) == typeid(int))  // Case we wanna generate ints
+      for (size_t i = 0; i < size; i++)
+        vect[i] = static_cast<int>(rand())%max;
+
+    if (typeid(T) == typeid(float))  // Case we wanna generate floats
+      for (size_t i = 0; i < size; i++)
+        vect[i] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
     return vect;
   }
 

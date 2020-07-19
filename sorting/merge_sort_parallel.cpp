@@ -81,7 +81,7 @@ int main(int argc, char **argv)
     I = (p < N % P) ? I + 1 : I;
 
     // Initialize vector partition
-    std::vector<float> vect = utils::get_random_vector(I, p);
+    std::vector<float> vect = utils::get_random_vector<float>(I, p);
     std::vector<float> vect_prev(I_prev);
     std::vector<float> vect_next(I_next);
     std::vector<float> merged(2 * I + 2);
@@ -103,7 +103,7 @@ int main(int argc, char **argv)
                 transferVector(merged, &vect, 0, I);          // Get Min
             }
             if (!even_process && !first_process)
-            { // odd porcess
+            { // odd process
                 MPI_Recv(&vect_prev[0], I_prev, MPI_FLOAT, p - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
                 MPI_Send(&vect[0], I, MPI_FLOAT, p - 1, 0, MPI_COMM_WORLD);
                 mergeSortedVectors(vect, vect_prev, &merged);      // Sorted Merge

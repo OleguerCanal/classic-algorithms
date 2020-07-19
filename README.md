@@ -25,7 +25,7 @@ More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercana
 
 ## Arrays
 
-- Binary search
+- [Binary search](search/bin_search.cpp) (& variants)
 - [Bubble Sort](sorting/bubble_sort.cpp) (Serial)
 - [Heap Sort](sorting/heap_sort.cpp) (Serial)
 - Quick Sort (Serial)
