@@ -31,7 +31,6 @@ More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercana
 - Quick Sort (Serial)
 - [Merge Sort](sorting/merge_sort_parallel.cpp) (**Parallel**)
 
-
 ## Tree Traversal
 
 ### Recursive
@@ -73,7 +72,7 @@ More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercana
 
 - Stack allocated [Array](include/array.hpp). Usage [example](ds_tests/array_test.cpp). STD implementation [here](https://en.cppreference.com/w/cpp/container/array).
 - Vector
-- [Singly Linked List](include/single_link_list.hpp)
+- [Singly Linked List](include/single_link_list.hpp). Usage [example](ds_tests/slist_test.cpp)
 - Double Linked List
 - Stack
 - Queue

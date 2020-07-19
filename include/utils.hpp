@@ -57,7 +57,18 @@ namespace utils
     std::cout << std::endl;
   }
 
-  void print(single_link_list::ListNode *node)
+  void print(const custom_ds::Slist<int> &list)
+  {
+    custom_ds::s_list_node<int> *node = list.GetHead();
+    while (node != nullptr)
+    {
+      std::cout << node->val << ", ";
+      node = node->next;
+    }
+    std::cout << std::endl;
+  }
+
+  void print(custom_ds::s_list_node<int> *node)
   {
     while (node != nullptr)
     {

@@ -2,31 +2,100 @@
 
 #include <stdlib.h>
 
-namespace single_link_list
+namespace custom_ds
 {
-  // Definition for singly-linked list.
-  struct ListNode
-  {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-  };
+    // Definition for singly-linked list node.
+    template <typename T>
+    struct s_list_node
+    {
+        T val;
+        s_list_node *next;
 
-  ListNode *getList()
-  {
-    ListNode* node_1 = new ListNode(1);
-    ListNode* node_2 = new ListNode(2);
-    ListNode* node_3 = new ListNode(3);
-    ListNode* node_4 = new ListNode(4);
-    ListNode* node_5 = new ListNode(5);
-    ListNode* node_6 = new ListNode(6);
-    node_1->next = node_2;
-    node_2->next = node_3;
-    node_3->next = node_4;
-    node_4->next = node_5;
-    node_5->next = node_6;
-    return node_1;
-  }
-} // namespace single_link_list
+        s_list_node(T x) : val(x), next(nullptr) {}
+        s_list_node(T x, s_list_node *next) : val(x), next(next) {}
+    };
+
+    // Definition for singly-linked list node.
+    template <typename T>
+    class Slist
+    {
+    public:
+        Slist() {}
+        Slist(s_list_node<T> *root)
+        {
+            root_ = root;
+
+            // Update size_ and last_elem_ pointer
+            last_elem_ = root;
+            size_ = 1;
+            while (last_elem_->next != nullptr)
+            {
+                size_++;
+                last_elem_ = last_elem_->next;
+            }
+        }
+
+        int Size() const
+        {
+            return size_;
+        }
+
+        void Add(T elem)
+        {
+            size_++;
+            if (size_ == 1)
+            {
+                last_elem_ = new s_list_node<T>(elem);
+                root_ = last_elem_;
+                return;
+            }
+            last_elem_->next = new s_list_node<T>(elem);
+            last_elem_ = last_elem_->next;
+        }
+
+        bool Contains(T elem) const
+        {
+            if (size_ == 0)
+                return false;
+
+            s_list_node<T> *node = root_;
+            while (node != nullptr)
+            {
+                if (node->val == elem)
+                    return true;
+                node = node->next;
+            }
+
+            return false;
+        }
+
+        s_list_node<T> *GetHead() const
+        {
+            return root_;
+        }
+
+        void Print() const
+        {
+            s_list_node<T> *node = root_;
+            while (node != nullptr)
+            {
+                std::cout << node->val << " ";
+                node = node->next;
+            }
+            std::cout << std::endl;
+        }
+
+    private:
+        s_list_node<T> *root_;
+        s_list_node<T> *last_elem_; // Remembering last elem helps add stuff in cte time
+        size_t size_ = 0;
+    };
+
+    Slist<int> getList()
+    {
+        Slist<int> list;
+        for (int i = 0; i < 10; i++)
+            list.Add(i);
+        return list;
+    }
+} // namespace custom_ds

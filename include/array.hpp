@@ -1,3 +1,4 @@
+#pragma once
 #include <stdlib.h> // For size_t type
 
 namespace custom_ds
