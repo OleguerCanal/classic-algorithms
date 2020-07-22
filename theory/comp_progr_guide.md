@@ -27,4 +27,4 @@ This is just a list of random thoughts I have while approaching competitive prog
 
 ## List tricks
 
-- Sometimes when deleting a node you have to delete the first node of the list. In this case it helps to add a **dummy** node s.t. dummy->next = head, do all operations using his dummy as a new head and then return dummy->next;
+- **Dummy head**: Sometimes when deleting a node you have to delete the first node of the list. In this case it helps to add a **dummy** node s.t. dummy->next = head, do all operations using his dummy as a new head and then return dummy->next;
