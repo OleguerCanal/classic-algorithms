@@ -70,11 +70,11 @@ More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercana
 
 ## Data Structures
 
-- Stack allocated [Array](include/array.hpp). Usage [example](ds_tests/array_test.cpp). STD [implementation](https://en.cppreference.com/w/cpp/container/array).
-- Vector
-- [Singly Linked List](include/single_link_list.hpp). Usage [example](ds_tests/slist_test.cpp)
+- [Static Array](include/array.hpp) (stack allocated). Usage [example](ds_tests/array_test.cpp). STD [implementation](https://en.cppreference.com/w/cpp/container/array).
+- [Dynamic Array](). Usage [example](ds_tests/array_test.cpp). STD [implementation](https://en.cppreference.com/w/cpp/container/vector).
+- [Singly Linked List](include/single_link_list.hpp). Usage [example](ds_tests/slist_test.cpp).
 - Double Linked List
-- [Hash table](include/hash_table.hpp). Usage [example](ds_tests/hash_test.cpp). STD [implementation](http://www.cplusplus.com/reference/unordered_set/unordered_set/)
+- [Hash table](include/hash_table.hpp). Usage [example](ds_tests/hash_test.cpp). STD [implementation](http://www.cplusplus.com/reference/unordered_set/unordered_set/).
 - Stack
 - Queue
 - [BT](include/binnary_tree.hpp) (Binnary Tree)
