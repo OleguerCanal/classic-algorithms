@@ -15,6 +15,7 @@ More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercana
 - [Pointers](theory/pointers.md)
 - [Passing args to functions](theory/func_args.md)
 - [Memory Management](theory/memory_management.md)
+- [C++ KeyWords](theory/keywords.md)
 - Recursion
 - Dynamic programming
 - [Competitive programming problems approach guide](theory/comp_progr_guide.md)
