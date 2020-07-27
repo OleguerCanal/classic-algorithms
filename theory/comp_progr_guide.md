@@ -22,4 +22,9 @@ This is just a list of random thoughts I have while approaching competitive prog
 
 - Can it be done with **multiple indexes**?
     - Begin/End indexes
-    - Indexes traversing at different speeds
+    - Indexes traversing at different speeds (e.g split linked list into 2 halves, one index at speed 1, the other at speed 2)
+    - Indexes traversing with a certain offset (e.g. linked list remove n from end with a single pass, you run 2 indices with n of difference)
+
+## List tricks
+
+- **Dummy head**: Sometimes when deleting a node you have to delete the first node of the list. In this case it helps to add a **dummy** node s.t. dummy->next = head, do all operations using his dummy as a new head and then return dummy->next;
