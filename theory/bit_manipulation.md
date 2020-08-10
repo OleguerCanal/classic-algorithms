@@ -20,8 +20,18 @@ __OBS__: In case of doubt you can always convert to base 10, do operation there 
 
 ## Bit-wise operations:
 
-__NEG (~)__, __OR ||__, __AND &__, __XOR (Exclusive OR) ^__ (Only true if exactly one bit is true)
+NEG __~__, OR __|__, AND __&__, XOR (Exclusive OR) __^__
 
-### >>, <<
+Remember that each bit is treated individually.
 
-## Tricks
+### Bit translations
+ 
+__>> k__: Divides by 2^k
+__<< k__: Multiplies by 2^k
+
+## Two's Complement and Negative Numbers
+
+### Two's Complement
+
+Way to represent negative numbers. Instead of 8 4 2 1, the number is represented as -8 4 2 1. Meaning if right-most
+
