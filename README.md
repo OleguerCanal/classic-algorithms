@@ -72,7 +72,7 @@ More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercana
 ## Data Structures
 
 - [Static Array](include/array.hpp) (stack allocated). Usage [example](ds_tests/array_test.cpp). STD [implementation](https://en.cppreference.com/w/cpp/container/array).
-- [Dynamic Array](). Usage [example](ds_tests/array_test.cpp). STD [implementation](https://en.cppreference.com/w/cpp/container/vector).
+- [Dynamic Array](include/dyn_array.hpp) (heap allocated). Usage [example](ds_tests/dyn_array_test.cpp). STD [implementation](https://en.cppreference.com/w/cpp/container/vector).
 - [Singly Linked List](include/single_link_list.hpp). Usage [example](ds_tests/slist_test.cpp).
 - Double Linked List
 - [Hash table](include/hash_table.hpp). Usage [example](ds_tests/hash_test.cpp). STD [implementation](http://www.cplusplus.com/reference/unordered_set/unordered_set/).
