@@ -11,7 +11,7 @@ More algorithm implementations on my [LeetCode](https://leetcode.com/oleguercana
 ## Theory
 
 - [Complexity](theory/complexity.md)
-- Bit manipulation
+- [Bit manipulation](theory/bit_manipulation.md)
 - [Pointers](theory/pointers.md)
 - [Passing args to functions](theory/func_args.md)
 - [Memory Management](theory/memory_management.md)
