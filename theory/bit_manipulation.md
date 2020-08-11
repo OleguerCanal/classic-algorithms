@@ -29,9 +29,24 @@ Remember that each bit is treated individually.
 - __>> k__: Divides by 2^k (translates bits to the right)
 - __<< k__: Multiplies by 2^k (translates bits to the left)
 
-## Two's Complement and Negative Numbers
+## Negative Numbers
+
+### Signed binnary integers
+Use MSB (Most Significant Bit) to encode the sign of the number. (0 for positive, 1, for negative). The rest of the number is encoded as usual: `S 8 4 2 1`.
+
+### One's Complement
+Takes the positive representation of the number and inverts all bits (negation/complement). We know a value is negative since a bit is reserved for the sign (0 for positive, 1 for negative). Value: `S 8 4 2 1`
+
+e.g: -5 would be 11010 (since 5 is 00101).
+
+__Pros__: Easy addition and substraction
 
 ### Two's Complement
+Instead of `8 4 2 1`, the number is represented as `-8 4 2 1`. Meaning that if right-most bit is set to 1, it adds -8 to the encoded values.
 
-Way to represent negative numbers. Instead of 8 4 2 1, the number is represented as -8 4 2 1. Meaning if right-most
+e.g -3 in 4-bit notation would be 1101 (-8 + 5). Notice that complement as in 5 is the complement of 3 (abs of -3) wrt to 8.
+
+__Notice__: -k = concat(1, 2^(N-1) - k)
+
+
 
