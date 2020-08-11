@@ -8,7 +8,6 @@
 1010 = 10
 ```
 ## Basic operations:
-
 __+, -, *__: Same as in base 10 but in base 2.
 
 ```
@@ -19,15 +18,16 @@ __+, -, *__: Same as in base 10 but in base 2.
 __OBS__: In case of doubt you can always convert to base 10, do operation there and convert back.
 
 ## Bit-wise operations:
-
-NEG __~__, OR __|__, AND __&__, XOR (Exclusive OR) __^__
+- NEG __~__
+- OR __|__
+- AND __&__
+- XOR __^__ (Exclusive OR)
 
 Remember that each bit is treated individually.
 
 ### Bit translations
- 
-__>> k__: Divides by 2^k
-__<< k__: Multiplies by 2^k
+- __>> k__: Divides by 2^k (translates bits to the right)
+- __<< k__: Multiplies by 2^k (translates bits to the left)
 
 ## Two's Complement and Negative Numbers
 
