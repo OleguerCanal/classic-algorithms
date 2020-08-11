@@ -29,7 +29,7 @@ Remember that each bit is treated individually.
 - __<< k__: Multiplies by 2^k (translates bits to the left).
 
 #### Logical
-- __>>> k__: Divides by 2^k (translates bits to the right). Substitutes by 0 MSB.
+- __>>> k__: Divides by 2^k (translates bits to the right). Substitutes MSB by 0.
 
 #### Arithmetical
 - __>> k__: Roughly divides by 2^k (translates bits to the right). Substitutes MSB with the sign bit value.
