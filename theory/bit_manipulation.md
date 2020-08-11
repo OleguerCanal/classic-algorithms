@@ -73,3 +73,6 @@ Consider the number in 16-bits register (10 mantissa, 6 exponent stored in Two's
 - We can then convert it to decimal as: `... 2 1 0. -1 -2 ...` which means `... 4 2 1. 0.5 0.25 ...`whic results into 6.5 in base 10.
 
 __OBS__: If both are negative the coma moves to the left but the negative-value bit continues to be negative: e.g: `11000000|111110` -> `1.1 x 2 -2` -> `0.011` meaning `1 0.5 -0.25 0.125` (negative value is kept). Then in base 10: -0.125.
+
+
+LeetCode problems: [Number of 1 bits](https://leetcode.com/problems/number-of-1-bits/)
