@@ -36,7 +36,7 @@ Remember that each bit is treated individually.
 
 ## Negative Numbers
 
-### Signed binnary integers
+### Signed binnary integers (signed magnitude)
 Use MSB (Most Significant Bit) to encode the sign of the number. (0 for positive, 1, for negative). The rest of the number is encoded as usual: `S 8 4 2 1`.
 
 ### One's Complement
@@ -50,11 +50,26 @@ If the answer is positive there will be an overflow (N+1 bit set to 1), otherwis
 ### Two's Complement
 Instead of `8 4 2 1`, the number is represented as `-8 4 2 1`. Meaning that if right-most bit is set to 1, it adds -8 to the encoded values.
 
-e.g -3 in 4-bit notation would be 1101 (-8 + 5). Notice that complement as in 5 is the complement of 3 (abs of -3) wrt to 8.
+__e.g__: -3 in 4-bit notation would be 1101 (-8 + 5). Notice that complement as in 5 is the complement of 3 (abs of -3) wrt to 8.
 
 __Notice__: -k = concat(1, 2^(N-1) - k)
 
 The addition and substraction is the same as in One's Complement.
 
+## Floating point Binary
+Efficient use of computer register to represent wide variety of numbers.
 
+The number is expressed as a __mantissa__ and an __exponent__. I.e: number = mantissa x 2^exponent. 
+The more digits in the mantissa the greater the precision, the more digits in the exponent, the wider the range.
 
+If having a register of `N+M` positions, usually the first N contain the __mantissa__ (stored in two's complement) and the subsequent M the __exponent__ (also stored in two;s complement).
+
+__e.g__:
+Consider the number in 16-bits register (10 mantissa, 6 exponent stored in Two's Complement): `0110100000|000011`.
+- Both mantissa and exponent are positive (MSBs are 0).
+- Exponent is 3
+- We then know the number is 0.110100000 x 2^3
+- Which we can express as: 0110.100000 (shift the coma 3 positions)
+- We can then convert it to decimal as: `... 2 1 0. -1 -2 ...` which means `... 4 2 1. 0.5 0.25 ...`whic results into 6.5 in base 10.
+
+__OBS__: If both are negative the coma moves to the left but the negative-value bit continues to be negative: e.g: `11000000|111110` -> `1.1 x 2 -2` -> `0.011` meaning `1 0.5 -0.25 0.125` (negative value is kept). Then in base 10: -0.125.
