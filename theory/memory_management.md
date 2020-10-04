@@ -90,3 +90,8 @@ vector<Type> *vect = new vector<Type>; // Allocates everything in heap
 // Elements are in the heap because they can change dynamically
 ```
 
+# STD Move
+
+Instead of copying the 
+
+The element class needs to have a 
