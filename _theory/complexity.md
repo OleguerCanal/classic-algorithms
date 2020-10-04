@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Complexity"
-permalink: Algorithmics/theory/complexity
+permalink: /theory/complexity
 index: true
 ---
 
