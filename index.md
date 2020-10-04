@@ -7,5 +7,17 @@ index: false
 <div class="col-12" markdown="1">
 This website contains annotations on basic algorithmic concepts.
 
-## Content
+## Basics
 - [Complexity](theory/complexity)
+- [Bit manipulation](theory/bit_manipulation)
+
+<!-- - [Pointers](theory/pointers.md)
+- [Passing args to functions](theory/func_args.md)
+- [Memory Management](theory/memory_management.md)
+- [C++ KeyWords](theory/keywords.md)
+- Recursion
+- Dynamic programming
+- [Competitive programming problems approach guide](theory/comp_progr_guide.md) -->
+
+## Data structures
+
