@@ -1,6 +1,6 @@
 # Dynamic Programming
 
-For problemes which have an **optimal substructure property**: The optimal solution can be constructed from optimal solutions of its subproblems.
+For problems which have an **optimal substructure property**: The optimal solution can be constructed from optimal solutions of its subproblems.
 
 
 ## Tricks:

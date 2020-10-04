@@ -10,6 +10,7 @@ This website contains annotations on basic algorithmic concepts.
 ## Basics
 - [Complexity](theory/complexity)
 - [Bit manipulation](theory/bit_manipulation)
+- [Pointers](theory/pointers)
 
 <!-- - [Pointers](theory/pointers.md)
 - [Passing args to functions](theory/func_args.md)
