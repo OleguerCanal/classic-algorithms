@@ -8,4 +8,4 @@ index: false
 This website contains annotations on basic algorithmic concepts.
 
 ## Content
-- [Complexity](/theory/complexity)
+- [Complexity](theory/complexity)
