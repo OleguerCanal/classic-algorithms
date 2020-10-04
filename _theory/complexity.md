@@ -1,4 +1,9 @@
-# Complexity
+---
+layout: page
+title: "Complexity"
+permalink: /theory/complexity
+index: true
+---
 
 ## Time
 
