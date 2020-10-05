@@ -34,10 +34,12 @@ In case of doubt you can always convert to base 10, do operation there and conve
 
 Each bit is treated individually (no propagation as in basic operations).
 
-- NEG: ~
-- OR: $$\mid$$
+- NEG: ~. $$a + ~a = 0$$
+- OR: $$\mid$$.
 - AND: &
-- XOR: ^ (Exclusive OR)
+- XOR: ^ (Exclusive OR: Exactly one of the values is $$1$$) a ^ a = 0, $$a ^ 0 = a. It is associative and distributive.
+
+Practice: [Single number](https://leetcode.com/problems/single-number/)
 
 ### Bit translations
 - __$$<<$$ k__: Multiplies by $$2^k$$ (translates bits to the left).
@@ -48,7 +50,7 @@ Each bit is treated individually (no propagation as in basic operations).
 #### Arithmetical
 - __$$>>$$ k__: Roughly divides by $$2^k$$ (translates bits to the right). Substitutes MSB with the sign bit value.
 
-Practice: [Hamming weight](https://leetcode.com/problems/number-of-1-bits/), [reverse bits](https://leetcode.com/problems/reverse-bits/)
+Practice: [Hamming weight](https://leetcode.com/problems/number-of-1-bits/), [Reverse bits](https://leetcode.com/problems/reverse-bits/)
 
 ## Negative Numbers
 

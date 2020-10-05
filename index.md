@@ -10,7 +10,13 @@ This website contains annotations on basic algorithmic concepts.
 ## Basics
 - [Complexity](theory/complexity)
 - [Bit manipulation](theory/bit_manipulation)
+- [Coding language types](theory/languages)
+
+## Coding
+
+- [Memory management](theory/memory_management)
 - [Pointers](theory/pointers)
+
 
 <!-- - [Pointers](theory/pointers.md)
 - [Passing args to functions](theory/func_args.md)
@@ -21,4 +27,4 @@ This website contains annotations on basic algorithmic concepts.
 - [Competitive programming problems approach guide](theory/comp_progr_guide.md) -->
 
 ## Data structures
-
+-  [Linked List]()

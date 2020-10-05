@@ -1,6 +1,12 @@
-# Memory management notes
+---
+layout: post
+title: "Memory Management"
+permalink: /theory/memory_management
+index: true
+---
+{% include start-row.html %}
 
-## Stack allocation:
+## Stack allocation
 Stores temporary variables created by each function with a LIFO data structure managed by CPU.
 
 Example:
@@ -11,20 +17,20 @@ Example:
 
 Example:
 ```cpp
-  bool* visited = (bool*) alloca(sizeof(bool)*n); // alloca reserves in stack memory. WARNING! Not recomended, If causes stack overflow, program behavior is undefined
-  memset(visited, false, n);
+  bool* visited = (bool*) alloca(sizeof(bool)*n); // alloca reserves in stack memory. WARNING! Not recommended, If causes stack overflow, program behavior is undefined
+  memset(visited, false, n); // ste memory to false
 ```
 
 **Pros:**
-- Faster allocation
-- Automatically "destroyed" when scope is finished
+- <span style="color:green">Faster allocation.</span>
+- <span style="color:green">Automatically "destroyed" when scope is finished.</span>
 
 **Cons:**
-- Can only be used in this scope (between these brackets)
-- Objects can't be very very big (STACK memory is fixed to ~2MB ~= 1000x500 32bit numbers)
+- <span style="color:red">Can only be used in this scope (between these brackets).</span>
+- <span style="color:red">Objects can't be very very big (STACK memory is fixed to ~2MB ~= 1000x500 32bit numbers)</span>
 
 
-## Heap allocation:
+## Heap allocation
 Example of dynamically allocated memory:
 ```cpp
   Entity *entity = new Entity("oleguer");  // Created in heap
@@ -47,17 +53,17 @@ Example of dynamically allocated memory:
 
 Example:
 ```cpp
-  bool* visited = (bool*) malloc(sizeof(bool)*n); // malloc reserves in heap memory. WARNING! Not recomended, If causes stack overflow, program behavior is undefined
-  memset(visited, false, n);
+  bool* visited = (bool*) malloc(sizeof(bool)*n); // malloc reserves in heap memory.
+  memset(visited, false, n); // ste memory to false
 ```
 
 **Pros:**
-- Control over life-span of the object
-- Can hold bigger variables (HEAP memory is expandable)
+- <span style="color:green">Control over life-span of the object.</span>
+- <span style="color:green">Can hold bigger variables (HEAP memory is expandable).</span>
 
 **Cons:**
-- Slower
-- Can lead into memory leaks
+- <span style="color:red">Slower.</span>
+- <span style="color:red">Can lead into memory leaks.</span>
 
 ### The "NEW" KeyWord:
 - Finds the necessary memory for the specified data type in the HEAP memory.
@@ -90,8 +96,10 @@ vector<Type> *vect = new vector<Type>; // Allocates everything in heap
 // Elements are in the heap because they can change dynamically
 ```
 
-# STD Move
+<!-- # STD Move
 
 Instead of copying the 
 
-The element class needs to have a 
+The element class needs to have a  -->
+
+{% include end-row.html %}
