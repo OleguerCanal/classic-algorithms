@@ -10,7 +10,9 @@ This website contains annotations on basic algorithmic concepts.
 ## Basics
 - [Complexity](theory/complexity)
 - [Bit manipulation](theory/bit_manipulation)
-- [Coding language types](theory/languages)
+- [Programming language classification](theory/languages)
+- Parallelism
+- Debugging
 
 ## Coding
 
@@ -27,4 +29,22 @@ This website contains annotations on basic algorithmic concepts.
 - [Competitive programming problems approach guide](theory/comp_progr_guide.md) -->
 
 ## Data structures
--  [Linked List]()
+
+#### Sequence Containers
+
+-  Linked List
+-  Static Array. STD [implementation](https://en.cppreference.com/w/cpp/container/array).
+-  Dynamic Array. STD [implementation](https://en.cppreference.com/w/cpp/container/vector).
+
+#### Container Adaptors
+-  Stack
+-  Queue
+-  Heap
+
+#### Associative Containers
+-  Hash Table. STD [implementation](http://www.cplusplus.com/reference/unordered_set/unordered_set/).
+-  Binary Search Tree
+
+#### Other
+- Trie
+- Graph
