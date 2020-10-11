@@ -10,7 +10,8 @@ This website contains annotations on basic algorithmic concepts.
 ## Basics
 - [Complexity](theory/complexity)
 - [Bit manipulation](theory/bit_manipulation)
-- [Programming language classification](theory/languages)
+- [Classifying programming languages](theory/languages)
+- [Object-Oriented Programming](theory/oop)
 - Parallelism
 - Debugging
 
