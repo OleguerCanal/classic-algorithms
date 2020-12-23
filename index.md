@@ -5,7 +5,10 @@ index: false
 ---
 <div class="row" markdown="1">
 <div class="col-12" markdown="1">
+
 This website contains annotations on basic algorithmic concepts.
+<span style="color:red">This page is under construction and thus VERY incomplete.</span>
+
 
 ## Basics
 - [Complexity](theory/complexity)
