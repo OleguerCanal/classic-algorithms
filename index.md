@@ -18,6 +18,8 @@ This website contains annotations on basic algorithmic concepts.
 - Parallelism
 - Debugging
 
+
+
 ## Coding
 
 - [Memory management](theory/memory_management)
@@ -32,7 +34,12 @@ This website contains annotations on basic algorithmic concepts.
 - Dynamic programming
 - [Competitive programming problems approach guide](theory/comp_progr_guide.md) -->
 
-## Data structures
+## Data-Bases
+
+- [Introduction to SQL](theory/sql_intro)
+
+
+<!-- ## Data structures
 
 #### Sequence Containers
 
@@ -51,4 +58,4 @@ This website contains annotations on basic algorithmic concepts.
 
 #### Other
 - Trie
-- Graph
+- Graph -->
