@@ -13,7 +13,8 @@ index: true
 - **Table**: Stores data organized in *columns* (set of elements of same type), and *rows* (each record of the table).
 - **Types**: `INTEGER`, `REAL`, `TEXT`, `DATE`
 - **Statement**: Text recognized as a valid command (always ends in `;`)
-
+- **Primary key**: Uniquely identifies a row. Thus, it must be unique, only one column, not NULL.
+- **Foreign key**: Primary key of a table appearing in a different table.
 
 ### Table Creation
 
@@ -190,8 +191,43 @@ GROUP BY col1
 
 ### Multiple Tables
 
-dsd,
+#### INNER JOIN
 
+Only keeps values which are in both matched columns.
+
+```sql
+SELECT t1.col1, t2.col2
+FROM tbl1 t1
+JOIN tbl2 t2 ON t1.col_a = t2.col_b
+```
+
+#### LEFT JOIN
+
+Keeps only the exact same values from table 1.
+
+```sql
+SELECT t1.col1, t2.col2
+FROM tbl1 t1
+LEFT JOIN tbl2 t2 ON t1.col_a = t2.col_b
+```
+
+#### CROSS JOIN
+
+Combines all rows of table 1 with all rows of table 2.
+
+#### UNION
+
+Appends table2 to table 1.
+
+### Other
+
+#### DELETE
+
+```sql
+DELETE tabl
+FROM tbl
+GROUP BY col1
+```
 
 
 {% include end-row.html %}
