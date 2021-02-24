@@ -38,6 +38,9 @@ This website contains annotations on basic algorithmic concepts.
 
 - [Introduction to SQL](theory/sql_intro)
 
+## Machine Learning
+
+- [Distributions](theory/distributions)
 
 <!-- ## Data structures
 
