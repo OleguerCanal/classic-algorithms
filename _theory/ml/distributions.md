@@ -208,4 +208,34 @@ PDF(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{1}{2} \frac{(x - \mu)^2}{\si
 
 $$X$$ follows a log-normal distribution if $$\log (X)$$ follows a normal distribution.
 
+#### Exponential
+
+{% include end-row.html %}
+{% include start-row.html %}
+
+Measures the amount of time probability between two Poison-type events.
+$$\lambda$$ again is the expected number of events within the 
+
+\begin{equation}
+x \in [0, \inf)
+\end{equation}
+
+\begin{equation}
+PDF(x) = \lambda e^{- \lambda x}
+\end{equation}
+
+- It models events without memory (the occurrence of events are independent).
+
+{% include annotation.html %}
+Can be thought of as a continuous version of a Geometric distribution.
+"*Number of failures until one success*" is analogous to "*time until event*". 
+{% include end-row.html %}
+{% include start-row.html %}
+
+#### Gamma
+
+
+#### $$\chi^2$$
+
+
 {% include end-row.html %}
