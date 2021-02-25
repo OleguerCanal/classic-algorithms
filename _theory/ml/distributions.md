@@ -8,7 +8,7 @@ index: true
 
 - **Random variable**: Mapping between outcomes and real values that ease the probability calculus.
   
-- **Independence**: The occurrence of an outcome $$A_1$$ variable doesnt affect the other $$A_2$$: $$p(A_1 \cap A_2) = p(A_1) p(A_2)$$
+- **Independence**: The occurrence of an outcome $$A_1$$ variable doesn't affect the other $$A_2$$: $$p(A_1 \cap A_2) = p(A_1) \cdot p(A_2)$$
 
 - **Probability distro**: Function that provides occurrence probability of possible outcomes. Can be Discrete/Continuous.
     - **PMF** (Probability Mass Function): Probability of each point in a discrete R.V.
@@ -53,7 +53,7 @@ X \in \{0, 1\}
 
 
 \begin{equation}
-p(X = x) =
+p(X = x \mid \lambda) =
 \begin{cases}
 \lambda & \textrm{if} x = 1 \newline
 1-\lambda & \textrm{if} x = 0
@@ -73,9 +73,8 @@ Where $$\sum_i \lambda_i = 1$$, and $$\lambda_i \in [0, 1] \forall i$$.
 X \in \{1:k\}
 \end{equation}
 
-
 \begin{equation}
-p(X=x) =
+p(X=x \mid \lambda_{i=1:N}) =
 \begin{cases}
 \lambda_1 & \textrm{if} x = 1 \newline
 \lambda_2 & \textrm{if} x = 2 \newline
@@ -89,7 +88,7 @@ Remember that the cross-entropy between the data distribution and the approximat
 $$\mathcal{H} (P, Q) = E_P [I_Q] = - \sum p(P=p_i) \log (Q = p_i) = - \sum \lambda_i \log (\hat \lambda_i)$$
 
 Usually for classification tasks $$\lambda_i$$ is a hard label, so the loss associated with a datapoint becomes $$- \log (\hat \lambda_i)$$ (negative log of the guessed prob).
-Remember that the cross-entropy is usually used when the data information is fixed, thus KL divergence $$D_{KL} (P \Vert Q) = E_P [I_Q - I_P]$$ is a simple translation of $$\mathcal{H} (P, Q)$$.
+Remember that the cross-entropy is often used when the data information is fixed, thus KL divergence $$D_{KL} (P \Vert Q) = E_P [I_Q - I_P]$$ is a simple translation of $$\mathcal{H} (P, Q)$$.
 
 #### Binomial
 
@@ -102,9 +101,8 @@ Number of successes in $$n$$ Bernoullies (with mean $$\lambda \in [0, 1]$$).
 X \in \{1:n\}
 \end{equation}
 
-
 \begin{equation}
-p(X=x) = {N \choose x} \lambda^x (1 - \lambda)^{n - x}
+p(X = x \mid \lambda) = {N \choose x} \lambda^x (1 - \lambda)^{n - x}
 \end{equation}
 
 {% include annotation.html %}
@@ -127,7 +125,7 @@ x_{i \in 1:k} \in \{0:n\}
 Where: $$\sum_{i=1}^k x_i = n$$
 
 \begin{equation}
-p(X=\{x_1, ..., x_k\}) = {N \choose {x_1, ..., x_k}} \lambda_1^{x_1} ... \lambda_k^{x_k}
+p(X=\{x_1, ..., x_k\} \mid N, \lambda_{i=1:N}) = {N \choose {x_1, ..., x_k}} \lambda_1^{x_1} ... \lambda_k^{x_k}
 \end{equation}
 
 Notice this is a generalization of binomial distribution for categorical variables.
@@ -146,7 +144,7 @@ x \in \mathbb{N}
 \end{equation}
 
 \begin{equation}
-p(X = x) = (1 - \lambda)^{x-1} \lambda
+p(X = x \mid \lambda) = (1 - \lambda)^{x-1} \lambda
 \end{equation}
 
 #### Poison
@@ -159,7 +157,7 @@ x \in \mathbb{N}
 \end{equation}
 
 \begin{equation}
-p(X = x) = \frac{\lambda^x e^{- \lambda}}{x!}
+p(X = x \mid \lambda) = \frac{\lambda^x e^{- \lambda}}{x!}
 \end{equation}
 
 ### Continuous
@@ -173,7 +171,7 @@ x \in [a, b]
 \end{equation}
 
 \begin{equation}
-PDF(x) = \frac{1}{b-a}
+PDF(x, a, b) = \frac{1}{b-a}
 \end{equation}
 
 - Is the distribution which gives the **highest entropy** for $$x \in [a, b]$$ 
@@ -195,7 +193,7 @@ x \in \mathbb{R}
 \end{equation}
 
 \begin{equation}
-PDF(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{1}{2} \frac{(x - \mu)^2}{\sigma^2}}
+PDF(x, \mu, \sigma) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{1}{2} \frac{(x - \mu)^2}{\sigma^2}}
 \end{equation}
 
 - Is the distribution which gives the **highest entropy** for a fixed variance $$\sigma^2$$ for $$x \in \mathbb{R}$$.
@@ -204,27 +202,39 @@ PDF(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{1}{2} \frac{(x - \mu)^2}{\si
 
 **Central limit theorem**: The sum of independent samples from any distribution tends to follow a normal distribution (as the number of samples grows).
 
-#### Log-Normal
+<!-- #### Log-Normal
 
-$$X$$ follows a log-normal distribution if $$\log (X)$$ follows a normal distribution.
+$$X$$ follows a log-normal distribution if $$\log (X)$$ follows a normal distribution. -->
+
+#### $$\chi^2$$
+
+Models the sum of k squared standardized normals.
+
+\begin{equation}
+x \in (0, \infty)
+\end{equation}
+
+\begin{equation}
+PDF(x, k) = \frac{1}{\Gamma (k) 2^{\frac{k}{2}}} x^{\frac{k}{2} - 1} e^{- \frac{x}{2}}
+\end{equation}
 
 #### Exponential
 
 {% include end-row.html %}
 {% include start-row.html %}
 
-Measures the amount of time probability between two Poison-type events.
+Measures the probability of the amount of time between two Poison-type events.
 $$\lambda$$ again is the expected number of events within the 
 
 \begin{equation}
-x \in [0, \inf)
+x \in [0, \infty)
 \end{equation}
 
 \begin{equation}
-PDF(x) = \lambda e^{- \lambda x}
+PDF(x, \lambda) = \lambda e^{- \lambda x}
 \end{equation}
 
-- It models events without memory (the occurrence of events are independent).
+- "*It doesn't have memory*": The occurrence of events are independent.
 
 {% include annotation.html %}
 Can be thought of as a continuous version of a Geometric distribution.
@@ -234,8 +244,52 @@ Can be thought of as a continuous version of a Geometric distribution.
 
 #### Gamma
 
+The same way the **exponential** distribution predicts the amount of time until the first **Poison** event, **gamma** distribution predicts the time until the k-th Poison event.
 
-#### $$\chi^2$$
+\begin{equation}
+x \in (0, \infty)
+\end{equation}
 
+Presents two representations. One with shape ("number" of events $$k$$) and scale parameters ($$\theta$$):
+
+\begin{equation}
+PDF(x, k, \theta) = \frac{1}{\Gamma (\alpha) \theta^k} x^{k - 1} e^{- \frac{x}{\theta}}
+\end{equation}
+
+And one with shape ($$\alpha = k$$ "number" of events) and rate parameters ($$\beta = \frac{1}{\theta}$$ rate at which Poison events occur $$\lambda$$):
+
+\begin{equation}
+PDF(x, \alpha, \beta) = \frac{\beta^\alpha}{\Gamma (\alpha)} x^{\alpha - 1} e^{- \beta x}
+\end{equation}
+
+
+- It is the distribution which gives a higher entropy for a fixed $$E[X] = k \theta = \frac{\alpha}{\beta} \geq 0$$ for $$x \in (0, \infty)$$
+- Exponential, $$\chi^2$$, and Erlang distributions are particular cases of Gamma distribution.
+- It is often used as a conjugate prior of other distributions.
+<!-- -  -->
+
+<!-- #### Dirichlet -->
+
+## Hypothesis Testing
+
+#### p-value
+- Probability of observing a result at least as extreme as the ones obtained assuming $$\mathcal{H}_0$$ is correct.
+- Gives a metric of how likely it is to have observed something "by chance".
+- If $$p_{val}$$ is very small $$\rightarrow$$ it is very unlikely to have observed what we observed under $$\mathcal{H}_0$$ $$\rightarrow$$ must be rejected (it is probably wrong as our observation is very strange).
+
+#### Statistical testing pipeline
+Statistical testing is used to know whether an hypothesis is significant.
+The main steps are as follows:
+
+1. Define a null Hypothesis $$H_0$$ which will be rejected or not.
+2. Define a **confidence** $$c$$ or **critical value** $$\alpha = 1 - c$$.
+   - If $$p_{val} < \alpha \rightarrow \text{Reject hypothesis}$$
+   - If $$p_{val} > \alpha \rightarrow \text{Do NOT reject hypothesis}$$
+
+3. Determine the distribution our data follows.
+4. Compute a suited test-statistic and p-value.
+5. Reject/Don't reject hypothesis
+
+**Common tests:** z-test, t-test, ANOVA, $$\chi^2$$-test...
 
 {% include end-row.html %}
