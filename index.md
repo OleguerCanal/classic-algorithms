@@ -41,6 +41,7 @@ This website contains annotations on basic algorithmic concepts.
 ## Machine Learning
 
 - [Distributions](theory/distributions)
+- [Common models](theory/ml_models)
 
 <!-- ## Data structures
 
