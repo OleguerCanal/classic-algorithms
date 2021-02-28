@@ -209,11 +209,25 @@ FROM table
 Store a query output as a temporal table for later usage.
 
 ```sql
-WITH CTE
-AS
+WITH CTE AS
 (
    --Your query
 )
+```
+
+You can combine multiple helper tables as:
+
+```sql
+WITH CTE_1 AS
+(
+   --Your query using original data
+),
+CTE_2 AS
+(
+   --Your query using CTE_1
+)
+
+-- Here you can use CTE_2
 ```
 
 
