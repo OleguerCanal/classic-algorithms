@@ -151,7 +151,7 @@ We already saw this idea in [dimensionality reduction algorithms](https://campus
 1. Apply a linear function to the input $$\vec{x}$$ (parametrized as $$\vec{w}$$).
 2. Apply a sigmoid function to this output: $$f(x) = \frac{e^x}{e^x + 1}$$.
 
-In summary, logistic regression assumes the following functional form:
+Therefore:
 
 \begin{equation}
 \hat p (\vec{x}) = \frac{e^{< \vec{w}, \vec{x} >}}{e^{< \vec{w}, \vec{x} >} + 1}
@@ -210,12 +210,15 @@ Lasso regression
 
 ### k-means
 
-**Method**: Randomly place $$k$$ centroids and iteratively move them so they 
+**Method**: Randomly place $$k$$ centroids and iteratively repeat these two steps until convergence:
+- Assign each point of the dataset to the closest centroid.
+- Move the centroid to the center of mass of its assigned points.
 
 **Pos/Cons:**
-- <span style="color:green"></span>
+- <span style="color:green">Simple</span>
 - <span style="color:red">Number of clusters need to be pre-set</span>
-- <span style="color:red">Isotropic clusters</span>
+- <span style="color:red">Isotropic: Only works for spherical clusters</span>
+- <span style="color:red">Optimal not guaranteed</span>
 
 
 ### Expectation Maximization
