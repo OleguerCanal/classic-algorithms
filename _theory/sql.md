@@ -105,6 +105,7 @@ WHERE col LIKE 'bla_bla'; --'_' can be any character
 WHERE col LIKE 'bla%'; --'%' can be any string (also empty)
 WHERE col IS (NOT) NULL; 
 WHERE col BETWEEN val1 AND val2; --Both inclusive
+WHERE col IN (SELECT col2 FROM tbl) -- If element present in col2
 ```
 
 {% include annotation.html %}
@@ -145,6 +146,7 @@ Calculations performed on multiple rows of the table, for instance:
 
 ```sql
 SELECT COUNT(col)
+SELECT COUNT(DISTINCT col) --interesting when joining tables
 SELECT SUM(col)
 SELECT AVG(col)
 SELECT MIN(col)
@@ -235,11 +237,23 @@ CTE_2 AS
 
 **INNER JOIN**: Only keeps values which are in both matched columns.
 
+{% include end-row.html %}
+{% include start-row.html %}
 ```sql
 SELECT t1.col1, t2.col2
 FROM tbl1 t1
 JOIN tbl2 t2 ON t1.col_a = t2.col_b
 ```
+
+{% include annotation.html %}
+I think this is equivalent to:
+```sql
+SELECT t1.col1, t2.col2
+FROM tbl1 t1, tbl2 t2
+WHERE t1.col_a = t2col_b
+```
+{% include end-row.html %}
+{% include start-row.html %}
 
 **LEFT JOIN**: Keeps only the exact same values from table 1.
 
