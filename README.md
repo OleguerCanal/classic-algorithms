@@ -1,4 +1,6 @@
 # Algorithmics
+Slowly moving (and improving) all content to this [website](https://oleguercanal.github.io/Algorithmics/)
+
 Data structures and common algorithms playground. As well as some theory notes.
 Only dependencies are STD library and MPI for parallel implementations.
 As always more an exercise for me to think their implementation rather than anything useful.
