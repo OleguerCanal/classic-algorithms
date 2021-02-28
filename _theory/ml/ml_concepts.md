@@ -6,6 +6,8 @@ index: true
 ---
 {% include start-row.html %}
 
+**Machine Learning** studies algorithms which improve their performance through data: The more data they process, the better they will perform.
+
 ## Basics
 
 {% include end-row.html %}
@@ -13,11 +15,12 @@ index: true
 - **Paradigms of Machine Leaning**:
   - **Supervised**: Provided inputs and expected outputs it learns a mapping between them. Used for regression and classification.
   - **Unsupervised**: Learns patters in unstructured data: clustering, dim-reduction, learn distributions...
-  - **Semi-supervised**: Only a subset of the data is labelled. How can we leverage this situation?
+  <!-- - **Semi-supervised**: Only a subset of the data is labelled. How can we leverage this situation? -->
   - **Reinforcement**: Deals with decision-making problems.
 
 {% include annotation.html %}
-Supervised learning is **predictive**, while unsupervised learning is **descriptive**.
+- Supervised learning is **predictive**
+- Unsupervised learning is **descriptive**
 {% include end-row.html %}
 {% include start-row.html %}
 
@@ -33,6 +36,7 @@ Supervised learning is **predictive**, while unsupervised learning is **descript
   - **Bias** is introduced by our choices on the model's functional form. Wrong (or too-simple) assumptions often lead to under-fitting.
   - **Variance** error is the opposite: it appears when the model is too susceptible to the data. For instance, over-parametrized models tend to over-fit to the training data and perform poorly on test data.
   
+
 {% include annotation.html %}
 - **Bias error example**: If you choose a linear model to capture non-linear relations, doesnt matter how much data you use to train, it will never fit it well.
 
@@ -40,6 +44,15 @@ Supervised learning is **predictive**, while unsupervised learning is **descript
 {% include end-row.html %}
 {% include start-row.html %}
 
+## Evaluation Methods
+
+Loss functions
+
+Corss-validation
+
+Precision/Recall
+Error Types
+ROC
 
 ## Ensemble Methods
 
