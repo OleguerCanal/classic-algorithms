@@ -14,7 +14,7 @@ index: true
     - **PMF** (Probability Mass Function): Probability of each point in a discrete R.V.
     - **PDF** (Probability Density Function): Likelihood of each point in a continuous R.V. Or probability spread over area.
 
-- **Expectation**:
+- **Expectation**:Weighted average of the distribution (aka center of mass).
   - In discrete r.v.: $$E [X] = \sum p(x) x$$ 
   - In continuous r.v.: $$E [X] = \int p(x) x $$ 
 
