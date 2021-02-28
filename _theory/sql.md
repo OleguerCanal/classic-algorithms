@@ -10,9 +10,8 @@ index: true
 
 - **SQL** (Structured Query Language): Programming language designed to manage data held in *relational databases*.
 - **Relational Databases**: Database which stores information in one (ore more) tables (aka relations).
-- **Table**: Stores data organized in *columns* (set of elements of same type), and *rows* (each record of the table).
+- **Table**: Data organized in *columns* (set of elements of same type), and *rows* (each one representing an entry).
 - **Types**: `INTEGER`, `REAL`, `TEXT`, `DATE`
-- **Statement**: Text recognized as a valid command (always ends in `;`)
 - **Primary key**: Uniquely identifies a row. Thus, it must be unique, only one column, not NULL.
 - **Foreign key**: Primary key of a table appearing in a different table.
 
@@ -25,14 +24,18 @@ CREATE TABLE tbl (
    age INTEGER
 );
 ```
-
+{% include end-row.html %}
+{% include start-row.html %}
 To those, you can add constrains after the type such as:
 - `PRIMARY KEY`: Uniquely identifies the row (must be **unique**)
 - `UNIQUE`: Each row must have a different value.
 - `NOT NULL`: Cannot be null.
 - `DEFAULT val`: Assigns a default value. 
 
+{% include annotation.html %}
 Attempts to add elements which don't satisfy those conditions will result into a *constrain violation*.
+{% include end-row.html %}
+{% include start-row.html %}
 
 ### Content Modification
 
@@ -63,7 +66,8 @@ WHERE id = 4;
 **Delete elements certifying condition cond**
 
 ```sql
-DELETE FROM tbl
+DELETE
+FROM tbl
 WHERE col IS NULL;
 ```
 
@@ -76,7 +80,7 @@ WHERE col IS NULL;
 ```sql
 SELECT * FROM tbl;
 SELECT col1, col2 FROM tbl;
-SELECT col1 AS 'Col display name' FROM tbl; --displays different column name
+SELECT col1 AS 'Alias' FROM tbl; --displays different column name
 SELECT DISTINCT col1 FROM tbl; --only display different elements
 ```
 
@@ -114,13 +118,11 @@ col `=, !=, >, <` val
 You can combine multiple conditions as:
 
 ```sql
-WHERE cond1
-   AND cond2
+WHERE cond1 AND cond2
 ```
 
 ```sql
-WHERE cond1
-   OR cond2
+WHERE cond1 OR cond2
 ```
 
 Similarly, one can create a new column modifying values as:
@@ -137,15 +139,9 @@ FROM tbl;
 
 ### Aggregates
 
-**Aggregates**: Are calculations performed on multiple rows of the table.
-
-Usage:
-```sql
-SELECT FUNC(col)
-FROM tbl;
-```
-
-Examples:
+{% include end-row.html %}
+{% include start-row.html %}
+Calculations performed on multiple rows of the table, for instance:
 
 ```sql
 SELECT COUNT(col)
@@ -156,10 +152,18 @@ SELECT MAX(col)
 SELECT ROUND(col, decimals) --number of decimals as an int
 ```
 
-**GROUP BY**: Allows us to perform an operation on some column and give a result wrt groups of identical data in another one
+{% include annotation.html %}
+Basic usage:
+```sql
+SELECT FUNC(col)
+FROM tbl;
+```
+{% include end-row.html %}
+{% include start-row.html %}
 
 {% include end-row.html %}
 {% include start-row.html %}
+**GROUP BY**: Allows us to perform an operation on some column and give a result wrt groups of identical data in another one
 
 ```sql
 SELECT col1, AVG(col2)
@@ -189,11 +193,33 @@ GROUP BY col1
 {% include end-row.html %}
 {% include start-row.html %}
 
+### CASES
+
+```sql
+SELECT
+   CASE
+      WHEN cond1 THEN result1
+      WHEN cond2 THEN result2
+      ELSE result3
+   END AS new_col_name
+FROM table
+```
+
+### CTE
+Store a query output as a temporal table for later usage.
+
+```sql
+WITH CTE
+AS
+(
+   --Your query
+)
+```
+
+
 ### Multiple Tables
 
-#### INNER JOIN
-
-Only keeps values which are in both matched columns.
+**INNER JOIN**: Only keeps values which are in both matched columns.
 
 ```sql
 SELECT t1.col1, t2.col2
@@ -201,9 +227,7 @@ FROM tbl1 t1
 JOIN tbl2 t2 ON t1.col_a = t2.col_b
 ```
 
-#### LEFT JOIN
-
-Keeps only the exact same values from table 1.
+**LEFT JOIN**: Keeps only the exact same values from table 1.
 
 ```sql
 SELECT t1.col1, t2.col2
@@ -211,23 +235,46 @@ FROM tbl1 t1
 LEFT JOIN tbl2 t2 ON t1.col_a = t2.col_b
 ```
 
-#### CROSS JOIN
+**CROSS JOIN**: Combines all rows of table 1 with all rows of table 2.
 
-Combines all rows of table 1 with all rows of table 2.
+**UNION**: Appends table2 to table 1.
 
-#### UNION
 
-Appends table2 to table 1.
+### PIVOTING
 
-### Other
-
-#### DELETE
+Groups by a column elements and converts each element aggregation into different columns.
 
 ```sql
-DELETE tabl
-FROM tbl
-GROUP BY col1
+SELECT 
+  -- Whatever you want
+FROM
+(
+   -- Insert query that produces pivotable_col
+) AS TMP
+PIVOT
+(
+   -- Aggregate function over newly grouped categories
+   FOR pivotable_col IN ([category_1], [category_2], ...)
+) AS PVT
 ```
 
+### Window functions
+
+**OVER PARTITION**: Aggregates data same as GROUP BY but without grouping (leaves multiple rows with the repeated information).
+
+{% include end-row.html %}
+{% include start-row.html %}
+
+```sql
+SELECT 
+  -- Whatever columns you want
+   FUNC(col1) OVER(PARTITION BY col2) AS new_col_name
+FROM tbl
+```
+
+{% include annotation.html %}
+This will apply the `FUNC` aggregate on elements of `col1` grouping by `col2` but displaying each row.
+{% include end-row.html %}
+{% include start-row.html %}
 
 {% include end-row.html %}
