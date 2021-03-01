@@ -299,6 +299,12 @@ SELECT
    FUNC(col1) OVER(PARTITION BY col2) AS new_col_name
 FROM tbl
 ```
+Another useful example to index ordered rows:
+
+```sql
+SELECT  ROW_NUMBER() OVER(ORDER BY col2 ASC) AS new_col_name
+FROM tbl
+```
 
 {% include annotation.html %}
 This will apply the `FUNC` aggregate on elements of `col1` grouping by `col2` but displaying each row.
