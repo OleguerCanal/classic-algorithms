@@ -44,16 +44,41 @@ index: true
 {% include end-row.html %}
 {% include start-row.html %}
 
-## Evaluation Methods
+## Error Measures
 
 Loss functions
 
 Corss-validation
 
-Precision/Recall
-Error Types
-ROC
+### Binary Confusion Matrix
+
+- **Type I Error**: False Positive (Model guessed + but was -).
+- **Type II Error**: False Negative (Model guessed - but was +).
+- **Accuracy**:  $$\frac{\text{TP} + \text{TN}}{\text{TOTAL}}$$. Overall, what proportion did the model correctly guess.
+- **Precision**: $$\frac{\text{TP}}{\text{TP} + \text{I}}$$. From the ones, you said were +, what proportion did you correctly guess.
+- **Recall** $$\frac{\text{TP}}{\text{TP} + \text{II}}$$. From the ones that were +, how many did you correctly guess. (aka *true positive rate (TPR)*)
+- **Specificity** $$\frac{\text{TN}}{\text{TN} + \text{I}}$$. From the ones that were -, how many did you correctly guess.
+
+**Receiving Operating Characteristic ROC**
+
+Compares model **Recall** vs **FPR** (1 - Specificity) obtained with the studied model when varying a parameter.
+
+- **AUC** Measures how good is the model at distinguishing the classes. Higher AUG means higher **RECALL** and higher **SPECIFICITY**: Which means it is better at predicting positives as positives and negatives as negatives.
 
 ## Ensemble Methods
+
+**IDEA**: Combine multiple weak learners to improve results.
+
+Techniques:
+
+- **Mode**: Simple voting mechanism. Take what the majority of learners say
+
+- **Average** / **Weighted Average**: Assign a weight to each learner and compute the mean prediction.
+
+- **BAGGING (Bootstrap AGGregatING)** : Multiple models of the same type are trained with a random subset of the data sampled with replacement (**bootstrapping**). This technique is specially effective to **reduce variance**.
+
+- **BOOSTING**: Each datapoint is given an "*importance weight*" which is adjusted during the **sequential** training of multiple models. In addition, a "*reliability weight*" is assigned to each model and weighted average is used for the final guess. Although it also lowers the variance, it is mainly used to **lower the bias** of the models.
+  - **ADABOOST**: After model $$i$$ is trained, the weights associated with each datapoint are adjusted giving more importance to the ones that presented a worse performance.
+  - **Gradient Boosting**: Instead of changing the weight of each misclassification, fits 
 
 {% include end-row.html %}
