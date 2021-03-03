@@ -311,4 +311,17 @@ This will apply the `FUNC` aggregate on elements of `col1` grouping by `col2` bu
 {% include end-row.html %}
 {% include start-row.html %}
 
+### Misc.
+
+**COALESCE** uses first not null:
+
+```sql
+COALESCE(col_1, col_2, ...)
+```
+
+Can also be used to substitute null for zero in a column:
+```sql
+COALESCE(col_1, 0)
+```
+
 {% include end-row.html %}
